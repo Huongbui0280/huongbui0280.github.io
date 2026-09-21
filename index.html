@@ -9,6 +9,7 @@
 :root{
   --ink:#141a1f; --muted:#6a7480; --faint:#98a2ac;
   --accent:#1f6feb; --line:#e7e9ee; --bg:#fbfbfc; --chipbg:#f2f4f7;
+  --navy:#14213D; --amber:#FCA311; --amber-d:#9c5d00;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -41,22 +42,46 @@ h1{font-size:44px;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
 .links a{color:var(--accent);text-decoration:none;font-weight:600}
 .links a:hover{text-decoration:underline}
 
-/* WORK */
-.work{padding:40px 0 20px;border-top:1px solid var(--line);margin-top:30px}
-.work h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:22px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
-.card{
-  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
-  border-radius:14px;padding:22px;text-decoration:none;color:inherit;
-  transition:box-shadow .2s,transform .2s,border-color .2s;
-}
-.card:hover{box-shadow:0 8px 26px rgba(20,30,50,.09);transform:translateY(-3px);border-color:#d7dbe3}
-.kind{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-bottom:8px}
-.card h3{font-size:18px;line-height:1.25;margin-bottom:8px}
-.card p{font-size:14.5px;color:var(--muted);margin-bottom:14px;flex-grow:1}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.tag{font-size:11.5px;background:var(--chipbg);border-radius:20px;padding:4px 10px;color:#4b5563}
-.readmore{font-size:13.5px;font-weight:600;color:var(--accent)}
+/* WORK — editorial acts by HR function */
+.work{padding:46px 0 10px;border-top:1px solid var(--line);margin-top:34px}
+.work-lead{margin-bottom:38px}
+.work-lead .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:12px}
+.work-lead h2{font-size:30px;line-height:1.18;letter-spacing:-.02em;color:var(--navy);max-width:580px}
+.act{padding:30px 0;border-top:1px solid var(--line)}
+.act:first-of-type{border-top:none;padding-top:6px}
+.act-head{display:flex;gap:16px;align-items:baseline;margin-bottom:20px}
+.act-num{font-size:15px;font-weight:800;color:var(--amber);letter-spacing:.02em;flex:none;padding-top:3px}
+.act-fn{font-size:22px;line-height:1.2;color:var(--navy);margin-bottom:5px;letter-spacing:-.01em}
+.act-desc{font-size:15px;color:var(--muted);max-width:520px}
+.showcase{display:flex;gap:22px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s,border-color .25s}
+.showcase:hover{box-shadow:0 12px 34px rgba(20,33,61,.10);transform:translateY(-4px);border-color:#d7dbe3}
+.sc-thumb{flex:none;width:168px;height:124px;border-radius:12px;overflow:hidden;background:var(--navy)}
+.sc-thumb svg{display:block;width:100%;height:100%}
+.sc-main{flex:1;min-width:0}
+.kind{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber-d);margin-bottom:7px}
+.showcase h3{font-size:20px;line-height:1.22;margin-bottom:12px;color:var(--navy)}
+.ba{border-left:2px solid var(--line);padding-left:14px;margin-bottom:14px}
+.ba-row{display:flex;gap:10px;margin-bottom:7px}
+.ba-row:last-child{margin-bottom:0}
+.ba-k{flex:none;width:48px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
+.ba-before .ba-k{color:var(--faint)}
+.ba-after .ba-k{color:var(--amber-d)}
+.ba-row p{font-size:14.5px;line-height:1.5}
+.ba-before p{color:var(--muted)}
+.ba-after p{color:var(--navy);font-weight:600}
+.hashtags{display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:14px}
+.htag{font-size:12.5px;font-weight:600;color:var(--amber-d)}
+.readmore{font-size:14px;font-weight:650;color:var(--navy)}
+.showcase:hover .readmore{color:var(--amber-d)}
+/* coming soon */
+.soon{padding:30px 0 4px;border-top:1px solid var(--line)}
+.soon .act-num{color:var(--faint)}
+.soon-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.soon-chip{font-size:13px;color:var(--muted);background:var(--chipbg);border:1px dashed #cdd4de;border-radius:20px;padding:6px 13px}
+/* scroll reveal (only when JS on; content visible by default) */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 
 /* FOOTER */
 footer{padding:44px 0 64px;text-align:left;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line);margin-top:34px}
@@ -67,6 +92,9 @@ footer a{color:var(--accent);text-decoration:none}
   h1{font-size:34px}
   .mission{font-size:18px}
   .grid{grid-template-columns:1fr}
+  .showcase{flex-direction:column;gap:16px}
+  .sc-thumb{width:100%;height:120px}
+  .work-lead h2{font-size:24px}
 }
 </style>
 </head>
@@ -96,48 +124,119 @@ footer a{color:var(--accent);text-decoration:none}
   </section>
 
   <section class="work">
-    <h2>Selected work</h2>
-    <div class="grid">
+    <div class="work-lead reveal">
+      <p class="eyebrow">Selected work</p>
+      <h2>Across the HR stack — the systems behind each function, built and owned end to end.</h2>
+    </div>
 
-      <a class="card" href="analytics.html">
-        <div class="kind">Workday · Interactive</div>
-        <h3>People Analytics Dashboard</h3>
-        <p>A live 500-person reporting suite — headcount demographics, turnover and recruitment — with slicers and cross-filtering, the way I build them in Workday and Power BI.</p>
-        <div class="tags">
-          <span class="tag">Workday Report Writer</span>
-          <span class="tag">Power BI</span>
-          <span class="tag">Dashboards</span>
-          <span class="tag">HR Metrics</span>
+    <div class="act reveal">
+      <div class="act-head">
+        <span class="act-num">01</span>
+        <div><h3 class="act-fn">HR Operations &amp; Automation</h3></div>
+      </div>
+      <a class="showcase" href="outsourcing.html">
+        <div class="sc-thumb">
+          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="168" height="124" fill="#14213D"/>
+            <rect x="34" y="26" width="100" height="72" rx="8" fill="#ffffff"/>
+            <rect x="34" y="26" width="100" height="16" rx="8" fill="#EEF1F6"/>
+            <circle cx="44" cy="34" r="2.6" fill="#FCA311"/>
+            <rect x="44" y="54" width="62" height="6" rx="3" fill="#D9DDE3"/>
+            <rect x="44" y="66" width="76" height="6" rx="3" fill="#D9DDE3"/>
+            <rect x="44" y="78" width="48" height="6" rx="3" fill="#D9DDE3"/>
+            <circle cx="112" cy="80" r="12" fill="#FCA311"/>
+            <path d="M106 80 l4 4 l8 -8" stroke="#14213D" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <span class="readmore">Explore interactive dashboard &rarr;</span>
-      </a>
-
-      <a class="card" href="eotq.html">
-        <div class="kind">HR Platform · Interactive</div>
-        <h3>Employee of the Quarter Platform</h3>
-        <p>People nominate colleagues by writing their story, every manager votes across functions, and heads select winners by quota — recognition made visible.</p>
-        <div class="tags">
-          <span class="tag">Power Apps</span>
-          <span class="tag">Power Automate</span>
-          <span class="tag">SharePoint</span>
-          <span class="tag">Governance &amp; Audit</span>
+        <div class="sc-main">
+          <div class="kind">Power Platform · Interactive demo</div>
+          <h3>Outsourcing Management App</h3>
+          <div class="ba">
+            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>Leave, absence and resignation for outsourced staff tracked across emails, chats and spreadsheets.</p></div>
+            <div class="ba-row ba-after"><span class="ba-k">After</span><p>One Power Platform app — routed approvals, notifications, and a single clean record.</p></div>
+          </div>
+          <div class="hashtags"><span class="htag">#PowerApps</span><span class="htag">#PowerAutomate</span><span class="htag">#SharePoint</span><span class="htag">#ApprovalWorkflows</span><span class="htag">#HROps</span></div>
+          <span class="readmore">Explore interactive demo &rarr;</span>
         </div>
-        <span class="readmore">Explore interactive demo &rarr;</span>
       </a>
+    </div>
 
-      <a class="card" href="outsourcing.html">
-        <div class="kind">Automation · Interactive</div>
-        <h3>Outsourcing Management App</h3>
-        <p>Manual outsourced-staff workflows — leave, absence, resignation — re-engineered into one centralized Power Platform solution.</p>
-        <div class="tags">
-          <span class="tag">Power Apps</span>
-          <span class="tag">Power Automate</span>
-          <span class="tag">SharePoint Lists</span>
-          <span class="tag">Approval Workflows</span>
+    <div class="act reveal">
+      <div class="act-head">
+        <span class="act-num">02</span>
+        <div><h3 class="act-fn">People Analytics</h3></div>
+      </div>
+      <a class="showcase" href="analytics.html">
+        <div class="sc-thumb">
+          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="168" height="124" fill="#14213D"/>
+            <circle cx="52" cy="62" r="22" fill="none" stroke="#33415f" stroke-width="10"/>
+            <circle cx="52" cy="62" r="22" fill="none" stroke="#FCA311" stroke-width="10" stroke-dasharray="80 58" stroke-linecap="round" transform="rotate(-90 52 62)"/>
+            <rect x="96" y="74" width="12" height="24" rx="2" fill="#D9DDE3"/>
+            <rect x="114" y="58" width="12" height="40" rx="2" fill="#FCA311"/>
+            <rect x="132" y="44" width="12" height="54" rx="2" fill="#D9DDE3"/>
+          </svg>
         </div>
-        <span class="readmore">Explore interactive demo &rarr;</span>
+        <div class="sc-main">
+          <div class="kind">Workday · Power BI · Interactive dashboard</div>
+          <h3>People Analytics Dashboard</h3>
+          <div class="ba">
+            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>Headcount, turnover and recruitment numbers rebuilt by hand each month — and no one fully trusted them.</p></div>
+            <div class="ba-row ba-after"><span class="ba-k">After</span><p>A live 500-person dashboard with slicers and click-to-cross-filter that leaders act on.</p></div>
+          </div>
+          <div class="hashtags"><span class="htag">#Workday</span><span class="htag">#PowerBI</span><span class="htag">#PeopleAnalytics</span><span class="htag">#Dashboards</span><span class="htag">#HRMetrics</span></div>
+          <span class="readmore">Explore interactive dashboard &rarr;</span>
+        </div>
       </a>
+    </div>
 
+    <div class="act reveal">
+      <div class="act-head">
+        <span class="act-num">03</span>
+        <div><h3 class="act-fn">Employee Experience &amp; Recognition</h3></div>
+      </div>
+      <a class="showcase" href="eotq.html">
+        <div class="sc-thumb">
+          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="168" height="124" fill="#14213D"/>
+            <rect x="24" y="40" width="58" height="42" rx="6" fill="#33415f"/>
+            <rect x="33" y="33" width="58" height="42" rx="6" fill="#4a5a7d"/>
+            <rect x="42" y="26" width="58" height="42" rx="6" fill="#ffffff"/>
+            <rect x="49" y="35" width="36" height="4.5" rx="2.2" fill="#D9DDE3"/>
+            <rect x="49" y="44" width="44" height="4.5" rx="2.2" fill="#D9DDE3"/>
+            <rect x="49" y="53" width="28" height="4.5" rx="2.2" fill="#D9DDE3"/>
+            <circle cx="126" cy="62" r="17" fill="#FCA311"/>
+            <path d="M126 51 l3.2 6.9 l7.6 .9 l-5.5 5.3 l1.4 7.5 l-6.7 -3.6 l-6.7 3.6 l1.4 -7.5 l-5.5 -5.3 l7.6 -.9 z" fill="#14213D"/>
+          </svg>
+        </div>
+        <div class="sc-main">
+          <div class="kind">Power Platform · Interactive demo</div>
+          <h3>Employee of the Quarter Platform</h3>
+          <div class="ba">
+            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>Recognition lost in inboxes, and HR chasing leaders over email to pick winners with no shared record.</p></div>
+            <div class="ba-row ba-after"><span class="ba-k">After</span><p>Company-wide story nominations and voting, with transparent, quota-based selection everyone can see.</p></div>
+          </div>
+          <div class="hashtags"><span class="htag">#PowerApps</span><span class="htag">#Recognition</span><span class="htag">#Governance</span><span class="htag">#Audit</span><span class="htag">#EmployeeExperience</span></div>
+          <span class="readmore">Explore interactive demo &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="soon reveal">
+      <div class="act-head">
+        <span class="act-num">04</span>
+        <div>
+          <h3 class="act-fn">More HR domains — coming soon</h3>
+          <p class="act-desc">HR runs deep. These are next in the showcase as I build them out.</p>
+          <div class="soon-tags">
+            <span class="soon-chip">Talent Acquisition</span>
+            <span class="soon-chip">C&amp;B / Total Rewards</span>
+            <span class="soon-chip">Learning &amp; Development</span>
+            <span class="soon-chip">Onboarding</span>
+            <span class="soon-chip">HR Compliance &amp; Governance</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -146,5 +245,21 @@ footer a{color:var(--accent);text-decoration:none}
   </footer>
 
 </div>
+<script>
+  document.body.classList.add('js');
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 </body>
 </html>
