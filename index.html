@@ -73,6 +73,9 @@ h1{font-size:44px;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
 .htag{font-size:12.5px;font-weight:600;color:var(--amber-d)}
 .readmore{font-size:14px;font-weight:650;color:var(--navy)}
 .showcase:hover .readmore{color:var(--amber-d)}
+.showcase.no-link{cursor:default}
+.showcase.no-link:hover{box-shadow:none;transform:none;border-color:var(--line)}
+.sc-soon{display:inline-block;font-size:12.5px;font-weight:700;color:var(--amber-d);background:#fff6e8;border:1px solid #f3ddad;border-radius:20px;padding:4px 11px}
 /* coming soon */
 .soon{padding:30px 0 4px;border-top:1px solid var(--line)}
 .soon .act-num{color:var(--faint)}
@@ -222,9 +225,39 @@ footer a{color:var(--accent);text-decoration:none}
       </a>
     </div>
 
-    <div class="soon reveal">
+    <div class="act reveal">
       <div class="act-head">
         <span class="act-num">04</span>
+        <div><h3 class="act-fn">AI in HR</h3></div>
+      </div>
+      <div class="showcase no-link">
+        <div class="sc-thumb">
+          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="168" height="124" fill="#14213D"/>
+            <rect x="28" y="30" width="88" height="64" rx="10" fill="#ffffff"/>
+            <rect x="40" y="46" width="52" height="6" rx="3" fill="#D9DDE3"/>
+            <rect x="40" y="58" width="64" height="6" rx="3" fill="#D9DDE3"/>
+            <rect x="40" y="70" width="38" height="6" rx="3" fill="#D9DDE3"/>
+            <polygon points="128,40 131,54 145,58 131,62 128,76 125,62 111,58 125,54" fill="#FCA311"/>
+            <polygon points="120,74 122,82 130,84 122,86 120,94 118,86 110,84 118,82" fill="#FCA311" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="sc-main">
+          <div class="kind">Copilot · Copilot Studio · Prompting</div>
+          <h3>AI in HR</h3>
+          <div class="ba">
+            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>Drafting comms, policies and reports by hand, and answering the same employee questions over and over.</p></div>
+            <div class="ba-row ba-after"><span class="ba-k">After</span><p>Copilot and well-designed prompts draft, summarize and answer in minutes — with a human in the loop.</p></div>
+          </div>
+          <div class="hashtags"><span class="htag">#Copilot</span><span class="htag">#CopilotStudio</span><span class="htag">#Prompting</span><span class="htag">#GenAIforHR</span><span class="htag">#Automation</span></div>
+          <span class="sc-soon">Case study coming soon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="soon reveal">
+      <div class="act-head">
+        <span class="act-num">05</span>
         <div>
           <h3 class="act-fn">More HR domains — coming soon</h3>
           <p class="act-desc">HR runs deep. These are next in the showcase as I build them out.</p>
