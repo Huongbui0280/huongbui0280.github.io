@@ -7,11 +7,11 @@
 <meta name="description" content="An interactive walkthrough of the Outsourcing Management App — a centralized Power Platform solution for leave, maternity, absence and resignation of outsourced staff. Built by Huong Bui. Demo uses dummy data.">
 <style>
 :root{
-  --navy:#14213D; --bg:#F8F9FA; --surface:#FFFFFF; --line:#D9DDE3;
-  --ink:#14213D; --muted:#5a6472; --faint:#8b95a4;
-  --accent:#FCA311; --accent-d:#e8940a;
-  --ok:#2f9e6a; --pend:#c9820b; --no:#d1495b;
-  --navy-soft:#20304f;
+  --navy:#11131A; --bg:#FAF7F2; --surface:#FFFFFF; --line:#D8D1C6;
+  --ink:#11131A; --muted:#4A4E58; --faint:#80848D;
+  --accent:#D31145; --accent-d:#A00D34;
+  --ok:#2f9e6a; --pend:#7D0A29; --no:#D31145;
+  --navy-soft:#1C1F28;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -32,16 +32,16 @@ svg{display:block}
 .hero .wrap{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;width:100%}
 .eyebrow{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
 .hero h1{font-size:clamp(36px,6vw,64px);line-height:1.04;letter-spacing:-.03em;margin-bottom:22px}
-.hero p{font-size:clamp(16px,2.2vw,20px);color:#c8cfdb;max-width:560px;margin-bottom:22px}
+.hero p{font-size:clamp(16px,2.2vw,20px);color:#CFC7BA;max-width:560px;margin-bottom:22px}
 .hero .meta{display:flex;flex-wrap:wrap;gap:9px}
-.hero .meta span{font-size:12.5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:6px 13px;color:#dbe3ec}
-.scrollcue{margin-top:44px;font-size:13px;color:#9aa7ba;display:flex;align-items:center;gap:10px}
+.hero .meta span{font-size:12.5px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:6px 13px;color:#E0D9CE}
+.scrollcue{margin-top:44px;font-size:13px;color:#A8A094;display:flex;align-items:center;gap:10px}
 .scrollcue .arrow{width:26px;height:26px;border:2px solid var(--accent);border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:var(--accent);animation:bob 1.6s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .hero-art{width:100%}
 
 /* disclaimer */
-.disclaimer{font-size:12.5px;color:var(--muted);text-align:center;padding:14px 24px;background:#fff5e2;border-bottom:1px solid #f2dca6}
+.disclaimer{font-size:12.5px;color:var(--muted);text-align:center;padding:14px 24px;background:#FDEDF0;border-bottom:1px solid #F3BCC9}
 .disclaimer b{color:var(--navy)}
 
 /* reveal */
@@ -62,14 +62,14 @@ svg{display:block}
 .consolidate{border:0;background:var(--navy);color:#fff;font-size:14px;font-weight:700;padding:11px 20px;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;gap:9px;transition:background .2s}
 .consolidate:hover{background:var(--navy-soft)}
 .consolidate .k{background:var(--accent);color:var(--navy);border-radius:6px;padding:1px 7px;font-size:12px}
-.pstage{position:relative;height:440px;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(20,33,61,.08)}
+.pstage{position:relative;height:440px;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 50px rgba(17,19,26,.08)}
 .pstage .hintlabel{position:absolute;top:14px;left:0;right:0;text-align:center;font-size:12.5px;color:var(--faint);z-index:1;transition:opacity .4s}
 /* scattered channel cards */
-.chcard{position:absolute;width:186px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px;box-shadow:0 8px 22px rgba(20,33,61,.10);transition:transform .8s cubic-bezier(.6,.02,.2,1),opacity .6s ease;transform-origin:center}
+.chcard{position:absolute;width:186px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:13px 14px;box-shadow:0 8px 22px rgba(17,19,26,.10);transition:transform .8s cubic-bezier(.6,.02,.2,1),opacity .6s ease;transform-origin:center}
 .chcard .ch-h{display:flex;align-items:center;gap:8px;margin-bottom:9px}
-.chcard .ch-ic{width:26px;height:26px;border-radius:7px;flex:0 0 26px;display:flex;align-items:center;justify-content:center;background:#eef1f6}
+.chcard .ch-ic{width:26px;height:26px;border-radius:7px;flex:0 0 26px;display:flex;align-items:center;justify-content:center;background:#F1EBE2}
 .chcard .ch-t{font-size:12.5px;font-weight:700;color:var(--navy)}
-.chcard .ln{height:7px;border-radius:4px;background:#eceff3;margin-top:6px}
+.chcard .ln{height:7px;border-radius:4px;background:#F1EBE2;margin-top:6px}
 .chcard .ln.s{width:60%}
 .c1{top:40px;left:34px;transform:rotate(-8deg)}
 .c2{top:60px;right:44px;transform:rotate(7deg)}
@@ -78,14 +78,14 @@ svg{display:block}
 .c5{top:132px;left:50%;margin-left:-93px;transform:rotate(-2deg)}
 /* organized app appears */
 .orgapp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.94);transition:opacity .6s ease .35s,transform .6s ease .35s;pointer-events:none}
-.orgapp .frame{width:min(430px,86%);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 46px rgba(20,33,61,.16);overflow:hidden}
+.orgapp .frame{width:min(430px,86%);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 46px rgba(17,19,26,.16);overflow:hidden}
 .orgapp .fbar{background:var(--navy);color:#fff;padding:11px 15px;font-size:13px;font-weight:700;display:flex;align-items:center;gap:9px}
 .orgapp .fbar .g{width:9px;height:9px;border-radius:50%;background:var(--accent)}
 .orgapp .frow{display:flex;align-items:center;gap:11px;padding:12px 15px;border-bottom:1px solid var(--line);font-size:13px}
 .orgapp .frow:last-child{border-bottom:0}
-.orgapp .frow .fi{width:24px;height:24px;border-radius:6px;background:#eef1f6;flex:0 0 24px;display:flex;align-items:center;justify-content:center}
+.orgapp .frow .fi{width:24px;height:24px;border-radius:6px;background:#F1EBE2;flex:0 0 24px;display:flex;align-items:center;justify-content:center}
 .orgapp .frow .fs{margin-left:auto;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px}
-.orgapp .frow .fs.ap{background:#e4f4ec;color:var(--ok)} .orgapp .frow .fs.pe{background:#fdf0d8;color:var(--pend)}
+.orgapp .frow .fs.ap{background:#e4f4ec;color:var(--ok)} .orgapp .frow .fs.pe{background:#FBE2E8;color:var(--pend)}
 /* GO state */
 .pstage.go .chcard{opacity:0;transform:translate(0,-10px) scale(.6) rotate(0)}
 .pstage.go .c1{transform:translate(120px,120px) scale(.5) rotate(0);opacity:0}
@@ -97,18 +97,18 @@ svg{display:block}
 .pstage.go .hintlabel{opacity:0}
 
 /* SCROLLY */
-.scrolly{background:var(--navy);color:#e8edf3;padding:92px 0}
+.scrolly{background:var(--navy);color:#EDE6DC;padding:92px 0}
 .scrolly .head{max-width:700px;margin:0 auto 10px;padding:0 24px}
 .scrolly .section-tag{color:var(--accent)}
 .scrolly h2{font-size:clamp(28px,4.6vw,46px);line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;color:#fff}
-.scrolly .sub{color:#aeb9c7;font-size:18px}
+.scrolly .sub{color:#B0A899;font-size:18px}
 .sticky-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1060px;margin:36px auto 0;padding:0 24px;align-items:start}
 .steps{display:flex;flex-direction:column}
 .step{min-height:76vh;display:flex;flex-direction:column;justify-content:center}
 .step .num{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:800;letter-spacing:.08em;color:var(--accent);margin-bottom:12px}
 .step .num .b{background:var(--accent);color:var(--navy);border-radius:7px;padding:2px 9px}
 .step h3{font-size:26px;color:#fff;margin-bottom:12px;letter-spacing:-.01em}
-.step p{color:#b7c2ce;font-size:16.5px}
+.step p{color:#B9B1A3;font-size:16.5px}
 .stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
 .screens{position:relative;width:100%;max-width:400px;aspect-ratio:10/13.5;filter:drop-shadow(0 24px 50px rgba(0,0,0,.4))}
 .screen{position:absolute;inset:0;background:#fff;color:var(--ink);border-radius:20px;border:1px solid var(--line);overflow:hidden;opacity:0;transform:translateY(14px) scale(.98);transition:opacity .5s ease,transform .5s ease}
@@ -120,9 +120,9 @@ svg{display:block}
 .fld{margin-bottom:11px}
 .fld label{display:block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin-bottom:5px}
 .fld .val{border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:13.5px;color:var(--ink);background:#fff}
-.fld .val.hl{border-color:var(--accent);box-shadow:0 0 0 3px rgba(252,163,17,.16)}
+.fld .val.hl{border-color:var(--accent);box-shadow:0 0 0 3px rgba(211,17,69,.16)}
 .pill{display:inline-block;font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px}
-.pill.pend{background:#fdf0d8;color:var(--pend)}
+.pill.pend{background:#FBE2E8;color:var(--pend)}
 .pill.appr{background:#e4f4ec;color:var(--ok)}
 .pill.rej{background:#fbe6ea;color:var(--no)}
 .route{display:flex;flex-direction:column;gap:9px;padding-top:4px}
@@ -142,16 +142,16 @@ svg{display:block}
 .demo h2{font-size:clamp(28px,4.6vw,46px);line-height:1.1;letter-spacing:-.02em;margin-bottom:14px}
 .demo .sub{color:var(--muted);font-size:18px}
 .trybadge{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);background:var(--accent);border-radius:20px;padding:6px 14px;margin-bottom:16px}
-.app{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(20,33,61,.12)}
+.app{margin-top:34px;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 20px 60px rgba(17,19,26,.12)}
 .appbar{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);background:var(--bg);flex-wrap:wrap;gap:12px}
 .appbar .name{font-weight:800;font-size:15px;color:var(--navy)}
 .appbar .name span{font-weight:500;color:var(--muted);font-size:13px}
 .roleswitch{display:flex;background:var(--line);border-radius:11px;padding:3px}
 .roleswitch button{border:0;background:transparent;font-size:13px;font-weight:700;color:var(--muted);padding:8px 15px;border-radius:9px;cursor:pointer;transition:all .15s}
-.roleswitch button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(20,33,61,.16)}
+.roleswitch button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(17,19,26,.16)}
 .appbody{padding:22px}
 .who-badge{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-.who-badge .rb{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;background:#e7ecf5;color:var(--navy)}
+.who-badge .rb{font-size:11px;font-weight:800;padding:3px 10px;border-radius:20px;background:#EDE6DC;color:var(--navy)}
 .who-badge .rb.mgr{background:var(--accent);color:var(--navy)}
 .seclabel{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;color:var(--muted);background:var(--bg);border:1px dashed var(--line);border-radius:11px;padding:10px 13px;margin:14px 0 18px}
 .seclabel b{color:var(--navy)}
@@ -163,7 +163,7 @@ svg{display:block}
 .form .full{grid-column:1/-1}
 .form label{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:6px}
 .form input,.form select,.form textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;font-family:inherit;color:var(--ink);background:#fff}
-.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(252,163,17,.16)}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(211,17,69,.16)}
 .form textarea{min-height:66px;resize:vertical}
 .btn{border:0;border-radius:10px;padding:11px 20px;font-size:14px;font-weight:800;cursor:pointer}
 .btn.primary{background:var(--navy);color:#fff}
@@ -192,7 +192,7 @@ svg{display:block}
 .audit .logrow2 .who{font-weight:700;color:var(--ink)}
 .audit .logrow2 .tm{color:var(--faint);font-size:11px;margin-left:auto;white-space:nowrap}
 .empty{text-align:center;color:var(--faint);font-size:14px;padding:30px 0}
-.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:100;box-shadow:0 10px 30px rgba(20,33,61,.35)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:700;opacity:0;pointer-events:none;transition:all .3s;z-index:100;box-shadow:0 10px 30px rgba(17,19,26,.35)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* RESULT */
@@ -200,7 +200,7 @@ svg{display:block}
 .result h2{font-size:clamp(28px,4.6vw,46px);line-height:1.1;letter-spacing:-.02em;margin-bottom:22px}
 .wins{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
 .win{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:0 0 13px 13px;padding:20px}
-.win .wic{width:40px;height:40px;border-radius:11px;background:#fff5e2;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
+.win .wic{width:40px;height:40px;border-radius:11px;background:#FDEDF0;display:flex;align-items:center;justify-content:center;margin-bottom:13px}
 .win b{display:block;font-size:15.5px;margin-bottom:5px;color:var(--navy)}
 .win p{font-size:14px;color:var(--muted)}
 /* POWER PLATFORM FOR HR */
@@ -209,17 +209,17 @@ svg{display:block}
 .pplead{font-size:18px;color:var(--muted);max-width:640px;line-height:1.6;margin-bottom:8px}
 .ppgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:34px}
 .ppcard{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:22px}
-.ppcard .ppic{width:42px;height:42px;border-radius:12px;background:#fff5e2;color:var(--accent-d);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin-bottom:14px}
+.ppcard .ppic{width:42px;height:42px;border-radius:12px;background:#FDEDF0;color:var(--accent-d);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin-bottom:14px}
 .ppcard b{display:block;font-size:16px;color:var(--navy);margin-bottom:6px}
 .ppcard p{font-size:14px;color:var(--muted);line-height:1.55}
 .cta{margin-top:50px;text-align:center;background:var(--navy);color:#fff;border-radius:22px;padding:54px 30px;position:relative;overflow:hidden}
 .cta .bggrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px;mask-image:radial-gradient(500px 300px at 50% 0,#000,transparent)}
 .cta h3{font-size:27px;margin-bottom:12px;position:relative}
-.cta p{color:#b7c2ce;max-width:470px;margin:0 auto 24px;position:relative}
+.cta p{color:#B9B1A3;max-width:470px;margin:0 auto 24px;position:relative}
 .cta .btn.primary{display:inline-block;text-decoration:none;background:var(--accent);color:var(--navy);position:relative}
 .cta .btn.primary:hover{background:var(--accent-d)}
 .stack{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;position:relative}
-.stack span{font-size:12.5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:5px 12px;color:#dbe3ec}
+.stack span{font-size:12.5px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:5px 12px;color:#E0D9CE}
 footer{padding:40px 0 70px;text-align:center;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line)}
 footer a{text-decoration:none;color:var(--accent-d)}
 
@@ -256,29 +256,29 @@ footer a{text-decoration:none;color:var(--accent-d)}
     <div class="hero-art">
       <!-- abstract "one organized system" illustration -->
       <svg viewBox="0 0 320 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Organized system illustration">
-        <rect x="40" y="34" width="240" height="210" rx="18" fill="#20304f" stroke="#33445f"/>
-        <rect x="40" y="34" width="240" height="42" rx="18" fill="#FCA311"/>
-        <rect x="40" y="60" width="240" height="16" fill="#FCA311"/>
-        <circle cx="64" cy="55" r="6" fill="#14213D"/>
-        <rect x="80" y="49" width="120" height="12" rx="6" fill="#14213D" opacity=".55"/>
+        <rect x="40" y="34" width="240" height="210" rx="18" fill="#1C1F28" stroke="#33445f"/>
+        <rect x="40" y="34" width="240" height="42" rx="18" fill="#D31145"/>
+        <rect x="40" y="60" width="240" height="16" fill="#D31145"/>
+        <circle cx="64" cy="55" r="6" fill="#11131A"/>
+        <rect x="80" y="49" width="120" height="12" rx="6" fill="#11131A" opacity=".55"/>
         <g fill="#fff">
           <rect x="60" y="94" width="200" height="34" rx="9" opacity=".08"/>
           <rect x="60" y="136" width="200" height="34" rx="9" opacity=".08"/>
           <rect x="60" y="178" width="200" height="34" rx="9" opacity=".08"/>
         </g>
         <g>
-          <rect x="72" y="103" width="18" height="16" rx="4" fill="#FCA311" opacity=".9"/>
-          <rect x="100" y="105" width="86" height="8" rx="4" fill="#c8cfdb"/>
+          <rect x="72" y="103" width="18" height="16" rx="4" fill="#D31145" opacity=".9"/>
+          <rect x="100" y="105" width="86" height="8" rx="4" fill="#CFC7BA"/>
           <rect x="214" y="103" width="34" height="16" rx="8" fill="#2f9e6a"/>
-          <rect x="72" y="145" width="18" height="16" rx="4" fill="#FCA311" opacity=".9"/>
-          <rect x="100" y="147" width="72" height="8" rx="4" fill="#c8cfdb"/>
-          <rect x="214" y="145" width="34" height="16" rx="8" fill="#c9820b"/>
-          <rect x="72" y="187" width="18" height="16" rx="4" fill="#FCA311" opacity=".9"/>
-          <rect x="100" y="189" width="92" height="8" rx="4" fill="#c8cfdb"/>
+          <rect x="72" y="145" width="18" height="16" rx="4" fill="#D31145" opacity=".9"/>
+          <rect x="100" y="147" width="72" height="8" rx="4" fill="#CFC7BA"/>
+          <rect x="214" y="145" width="34" height="16" rx="8" fill="#7D0A29"/>
+          <rect x="72" y="187" width="18" height="16" rx="4" fill="#D31145" opacity=".9"/>
+          <rect x="100" y="189" width="92" height="8" rx="4" fill="#CFC7BA"/>
           <rect x="214" y="187" width="34" height="16" rx="8" fill="#2f9e6a"/>
         </g>
-        <circle cx="250" cy="228" r="30" fill="#FCA311"/>
-        <path d="M238 228 l8 8 l16 -18" fill="none" stroke="#14213D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="250" cy="228" r="30" fill="#D31145"/>
+        <path d="M238 228 l8 8 l16 -18" fill="none" stroke="#11131A" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
   </div>
@@ -304,31 +304,31 @@ footer a{text-decoration:none;color:var(--accent-d)}
 
       <div class="chcard c1">
         <div class="ch-h"><span class="ch-ic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         </span><span class="ch-t">Email</span></div>
         <div class="ln"></div><div class="ln s"></div>
       </div>
       <div class="chcard c2">
         <div class="ch-h"><span class="ch-ic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
         </span><span class="ch-t">Spreadsheet</span></div>
         <div class="ln"></div><div class="ln s"></div>
       </div>
       <div class="chcard c3">
         <div class="ch-h"><span class="ch-ic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </span><span class="ch-t">Chat message</span></div>
         <div class="ln"></div><div class="ln s"></div>
       </div>
       <div class="chcard c4">
         <div class="ch-h"><span class="ch-ic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
         </span><span class="ch-t">Paper form</span></div>
         <div class="ln"></div><div class="ln s"></div>
       </div>
       <div class="chcard c5">
         <div class="ch-h"><span class="ch-ic">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         </span><span class="ch-t">Another email</span></div>
         <div class="ln"></div><div class="ln s"></div>
       </div>
@@ -336,9 +336,9 @@ footer a{text-decoration:none;color:var(--accent-d)}
       <div class="orgapp">
         <div class="frame">
           <div class="fbar"><span class="g"></span> Outsourcing Management &mdash; one queue</div>
-          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Leave &mdash; Linh Tran <span class="fs ap">Approved</span></div>
-          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Maternity &mdash; Mai Vu <span class="fs pe">Pending</span></div>
-          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Resignation &mdash; Khoa Le <span class="fs pe">Pending</span></div>
+          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Leave &mdash; Linh Tran <span class="fs ap">Approved</span></div>
+          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Maternity &mdash; Mai Vu <span class="fs pe">Pending</span></div>
+          <div class="frow"><span class="fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M8 7V3m8 4V3M3 11h18M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"/></svg></span> Resignation &mdash; Khoa Le <span class="fs pe">Pending</span></div>
         </div>
       </div>
     </div>
@@ -387,9 +387,9 @@ footer a{text-decoration:none;color:var(--accent-d)}
           <div class="bar"><i></i><i></i><i></i><b>Approval routing</b></div>
           <div class="body">
             <div class="route">
-              <div class="node"><span class="ic" style="background:#e7ecf5"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></span><div class="t"><b>Linh Tran</b><span>Outsourced staff · own requests only</span></div></div>
+              <div class="node"><span class="ic" style="background:#EDE6DC"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></span><div class="t"><b>Linh Tran</b><span>Outsourced staff · own requests only</span></div></div>
               <div class="arrowdown">&darr;</div>
-              <div class="node"><span class="ic" style="background:#fff5e2"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#c9820b" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span><div class="t"><b>Line manager</b><span>Approves / rejects · team only</span></div></div>
+              <div class="node"><span class="ic" style="background:#FDEDF0"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#7D0A29" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></span><div class="t"><b>Line manager</b><span>Approves / rejects · team only</span></div></div>
               <div class="arrowdown">&darr;</div>
               <div class="node"><span class="ic" style="background:#e4f4ec"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#2f9e6a" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></span><div class="t"><b>HR admin</b><span>Full oversight · audit access</span></div></div>
             </div>
@@ -400,7 +400,7 @@ footer a{text-decoration:none;color:var(--accent-d)}
           <div class="body">
             <div class="logrow"><span class="dot"></span><div><span class="who">Linh Tran</span> submitted request<div class="tm">12 Oct 2026 · 09:14</div></div></div>
             <div class="logrow"><span class="dot" style="background:#2f9e6a"></span><div><span class="who">D. Vo (Manager)</span> approved<div class="tm">12 Oct 2026 · 11:02</div></div></div>
-            <div class="logrow"><span class="dot" style="background:#14213D"></span><div><span class="who">System</span> recorded &amp; notified<div class="tm">12 Oct 2026 · 11:02</div></div></div>
+            <div class="logrow"><span class="dot" style="background:#11131A"></span><div><span class="who">System</span> recorded &amp; notified<div class="tm">12 Oct 2026 · 11:02</div></div></div>
           </div>
         </div>
       </div>
@@ -439,9 +439,9 @@ footer a{text-decoration:none;color:var(--accent-d)}
     <div class="reveal"><div class="section-tag">The result</div>
     <h2>From "no system" to one source of truth</h2></div>
     <div class="wins reveal">
-      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8940a" stroke-width="2"><path d="M4 4h16v4H4zM4 12h16v8H4z"/></svg></div><b>One front door</b><p>Every leave, maternity, absence and resignation request captured through a single structured form — clean data from the start.</p></div>
-      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8940a" stroke-width="2"><path d="M12 2v20M5 9l7-7 7 7"/></svg></div><b>Approvals that route themselves</b><p>Requests reach the right approver automatically. No chasing, no bottleneck sitting in someone's inbox.</p></div>
-      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#e8940a" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><b>Audit-ready by default</b><p>Every action timestamped and attributed. "Who approved this?" is answered in one click.</p></div>
+      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A00D34" stroke-width="2"><path d="M4 4h16v4H4zM4 12h16v8H4z"/></svg></div><b>One front door</b><p>Every leave, maternity, absence and resignation request captured through a single structured form — clean data from the start.</p></div>
+      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A00D34" stroke-width="2"><path d="M12 2v20M5 9l7-7 7 7"/></svg></div><b>Approvals that route themselves</b><p>Requests reach the right approver automatically. No chasing, no bottleneck sitting in someone's inbox.</p></div>
+      <div class="win"><div class="wic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A00D34" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><b>Audit-ready by default</b><p>Every action timestamped and attributed. "Who approved this?" is answered in one click.</p></div>
     </div>
   </div>
 </section>
@@ -554,7 +554,7 @@ function toast(msg){ var t=document.getElementById('toast'); t.textContent=msg; 
 
 function setRole(r){ role=r; document.getElementById('btnEmp').classList.toggle('on',r==='employee'); document.getElementById('btnMgr').classList.toggle('on',r==='manager'); render(); }
 
-var shieldSVG='<svg class="sh" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14213D" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>';
+var shieldSVG='<svg class="sh" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#11131A" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg>';
 
 function render(){
   var badge=document.getElementById('whoBadge'), sec=document.getElementById('secLabel'), c=document.getElementById('appContent');

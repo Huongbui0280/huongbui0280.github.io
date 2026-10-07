@@ -3,153 +3,447 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Huong Bui</title>
-<meta name="description" content="Huong Bui — HRIS & People Operations specialist and automation builder. Deep Workday HCM expertise plus hands-on Power Platform automation. Open to Manager HR Operations, Manager HRIS, and HRIS Consultant roles.">
+<title>Huong Bui — HR Operations &amp; HRIS</title>
+<meta name="description" content="Huong Bui — HRIS &amp; People Operations specialist and automation builder. Deep Workday HCM expertise plus hands-on Power Platform automation. Open to Manager HR Operations, Manager HRIS, and HRIS Consultant roles.">
+<meta name="theme-color" content="#D31145">
 <style>
 :root{
-  --ink:#141a1f; --muted:#6a7480; --faint:#98a2ac;
-  --accent:#1f6feb; --line:#e7e9ee; --bg:#fbfbfc; --chipbg:#f2f4f7;
-  --navy:#14213D; --amber:#FCA311; --amber-d:#9c5d00;
+  --crimson:#D31145;
+  --crimson-d:#A00D34;
+  --crimson-l:#F2607F;
+  --ink:#11131A;
+  --bone:#FAF7F2;
+  --ink-70:#4A4E58;
+  --ink-45:#6E727B;   /* 4.5:1 on bone — AA for small text */
+  --ink-25:#B4B7BD;   /* decorative borders only, never text */
+  --line:#E6E0D7;
+  --line-s:#D8D1C6;
+  --card:#FFFFFF;
+  --tint:#FDEDF0;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  color:var(--ink);background:var(--bg);line-height:1.6;
-  -webkit-font-smoothing:antialiased;
+  color:var(--ink);background:var(--bone);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.wrap{max-width:820px;margin:0 auto;padding:0 24px;position:relative}
+::selection{background:var(--crimson);color:#fff}
 
-/* HERO */
-header{padding:76px 0 34px}
-h1{font-size:44px;line-height:1.08;letter-spacing:-.02em;margin-bottom:18px}
-.mission{font-size:21px;line-height:1.5;color:#2a333c;max-width:660px;margin-bottom:20px}
-.status{display:inline-flex;align-items:center;gap:8px;font-size:15px;color:var(--muted);margin-bottom:4px}
-.dot{width:8px;height:8px;border-radius:50%;background:#2fbf71;display:inline-block;box-shadow:0 0 0 3px rgba(47,191,113,.18)}
+/* ---------- scroll progress rail ---------- */
+#rail{position:fixed;top:0;left:0;height:3px;width:100%;background:transparent;z-index:60;pointer-events:none}
+#rail span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--crimson-d),var(--crimson),var(--crimson-l));
+  box-shadow:0 0 12px rgba(211,17,69,.5);transition:width .08s linear}
 
-/* SKILLS */
-.skills{padding:28px 0 6px;border-top:1px solid var(--line);margin-top:30px}
-.skillrow{font-size:15.5px;color:#39424c;margin-bottom:12px}
-.skillrow:last-child{margin-bottom:0}
-.skillrow b{color:var(--ink);font-weight:650}
+/* ---------- hero ---------- */
+header{padding:92px 0 36px;position:relative}
+#spot{position:absolute;inset:-40px -200px;pointer-events:none;z-index:0;opacity:0;transition:opacity .5s;
+  background:radial-gradient(260px circle at var(--mx,50%) var(--my,30%),rgba(211,17,69,.13),transparent 70%)}
+body.has-pointer header:hover #spot{opacity:1}
+header > *{position:relative;z-index:1}
+.eyebrow-top{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--crimson);margin-bottom:20px}
+.eyebrow-top::before{content:"";width:28px;height:2px;background:var(--crimson);display:block}
+h1{font-size:clamp(42px,8vw,72px);line-height:.98;letter-spacing:-.035em;font-weight:800;margin-bottom:22px}
+h1 .ln{display:block;overflow:hidden}
+h1 .ln i{display:block;font-style:normal;transform:translateY(102%);transition:transform .9s cubic-bezier(.16,1,.3,1)}
+body:not(.js) h1 .ln i{transform:none}
+body.lit h1 .ln:nth-child(1) i{transform:none;transition-delay:.05s}
+h1 .mark{position:relative;color:var(--crimson);white-space:nowrap}
+h1 .mark::after{content:"";position:absolute;left:0;right:0;bottom:.06em;height:.1em;background:var(--crimson);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .8s cubic-bezier(.16,1,.3,1) .6s;border-radius:2px}
+body.lit h1 .mark::after{transform:scaleX(1)}
+.mission{font-size:clamp(18px,2.4vw,22px);line-height:1.48;color:var(--ink-70);max-width:680px;margin-bottom:26px}
+.mission b{color:var(--ink);font-weight:650}
 
-/* PREVIOUSLY + LINKS */
-.meta{padding:26px 0;border-top:1px solid var(--line);margin-top:26px}
-.prev{font-size:15.5px;color:var(--muted);margin-bottom:18px}
-.prev a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
-.prev a:hover{border-color:var(--accent);color:var(--accent)}
-.links{display:flex;flex-wrap:wrap;gap:22px;font-size:15.5px}
-.links a{color:var(--accent);text-decoration:none;font-weight:600}
-.links a:hover{text-decoration:underline}
+.opento{display:inline-flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--line-s);
+  border-radius:999px;padding:9px 18px 9px 14px;font-size:15px;box-shadow:0 2px 10px rgba(17,19,26,.04)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--crimson);flex:none;position:relative}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--crimson);animation:ping 2.2s cubic-bezier(0,0,.2,1) infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.6}70%,100%{transform:scale(3.2);opacity:0}}
+.opento .lbl{color:var(--ink-45);font-size:13.5px;font-weight:600;letter-spacing:.02em}
+.rolebox{position:relative;height:23px;overflow:hidden;min-width:220px}
+.rolebox span{position:absolute;left:0;top:0;white-space:nowrap;font-weight:700;color:var(--crimson);
+  opacity:0;transform:translateY(100%);transition:opacity .45s,transform .45s cubic-bezier(.16,1,.3,1)}
+.rolebox span.on{opacity:1;transform:none}
+.rolebox span.out{opacity:0;transform:translateY(-100%)}
+body:not(.js) .rolebox{height:auto;overflow:visible}
+body:not(.js) .rolebox span{position:static;opacity:1;transform:none;display:block}
 
-/* WORK — editorial acts by HR function */
-.work{padding:46px 0 10px;border-top:1px solid var(--line);margin-top:34px}
-.work-lead{margin-bottom:38px}
-.work-lead .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:12px}
-.work-lead h2{font-size:30px;line-height:1.18;letter-spacing:-.02em;color:var(--navy);max-width:580px}
-.act{padding:30px 0;border-top:1px solid var(--line)}
-.act:first-of-type{border-top:none;padding-top:6px}
-.act-head{display:flex;gap:16px;align-items:baseline;margin-bottom:20px}
-.act-num{font-size:15px;font-weight:800;color:var(--amber);letter-spacing:.02em;flex:none;padding-top:3px}
-.act-fn{font-size:22px;line-height:1.2;color:var(--navy);margin-bottom:5px;letter-spacing:-.01em}
-.act-desc{font-size:15px;color:var(--muted);max-width:520px}
-.showcase{display:flex;gap:22px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;text-decoration:none;color:inherit;transition:box-shadow .25s,transform .25s,border-color .25s}
-.showcase:hover{box-shadow:0 12px 34px rgba(20,33,61,.10);transform:translateY(-4px);border-color:#d7dbe3}
-.sc-thumb{flex:none;width:168px;height:124px;border-radius:12px;overflow:hidden;background:var(--navy)}
-.sc-thumb svg{display:block;width:100%;height:100%}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:42px}
+.metric{background:var(--card);padding:20px 18px;transition:background .3s}
+.metric:hover{background:var(--tint)}
+.metric .n{font-size:30px;font-weight:800;letter-spacing:-.03em;color:var(--crimson);line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums}
+.metric .k{font-size:12px;color:var(--ink-45);line-height:1.35;font-weight:600}
+
+/* ---------- chapter framing ---------- */
+section{padding:62px 0}
+.sec-top{border-top:1px solid var(--line)}
+.chap{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.chap-n{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#fff;
+  background:var(--crimson);border-radius:5px;padding:4px 9px;flex:none}
+.chap-t{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-45)}
+h2{font-size:clamp(25px,4vw,34px);line-height:1.14;letter-spacing:-.025em;font-weight:800;max-width:640px}
+.lead{font-size:16.5px;color:var(--ink-70);max-width:620px;margin-top:14px}
+.lead b{color:var(--ink);font-weight:650}
+
+/* ---------- PART 01 : the 3-beat story ---------- */
+.story{margin-top:34px}
+.beatbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.bt{display:flex;align-items:center;gap:9px;background:transparent;border:1px solid var(--line-s);
+  border-radius:999px;padding:8px 15px 8px 11px;font-size:13px;font-weight:700;color:var(--ink-45);
+  cursor:pointer;font-family:inherit;transition:all .3s;text-align:left}
+.bt .bn{width:19px;height:19px;border-radius:50%;background:var(--line);color:var(--ink-45);font-size:10.5px;
+  font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;transition:all .3s}
+.bt:hover{border-color:var(--ink-25);color:var(--ink)}
+.bt.on{background:var(--ink);border-color:var(--ink);color:var(--bone)}
+.bt.on .bn{background:var(--crimson);color:#fff}
+
+.stagebox{position:relative;background:var(--ink);border-radius:20px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(17,19,26,.18)}
+.stagebox svg{display:block;width:100%;height:auto}
+.scene{opacity:0;transition:opacity .55s ease;pointer-events:none}
+.scene.on{opacity:1}
+body:not(.js) .scene{opacity:1}
+.stagefoot{display:flex;align-items:flex-start;gap:16px;padding:0 22px 20px;justify-content:space-between}
+.caps{position:relative;min-height:104px;flex:1}
+.cap{position:absolute;left:0;top:0;right:0;opacity:0;transform:translateY(8px);
+  transition:opacity .5s ease,transform .5s cubic-bezier(.16,1,.3,1)}
+.cap.on{opacity:1;transform:none}
+body:not(.js) .cap{position:static;opacity:1;transform:none;margin-bottom:14px}
+.cap h4{font-size:15.5px;font-weight:800;color:var(--bone);margin-bottom:5px;letter-spacing:-.01em}
+.cap p{font-size:14.5px;line-height:1.55;color:rgba(250,247,242,.68)}
+.cap p b{color:var(--crimson-l);font-weight:650}
+.dots{display:flex;gap:7px;flex:none;padding-top:5px}
+.dots button{width:8px;height:8px;border-radius:50%;border:none;padding:0;cursor:pointer;
+  background:rgba(250,247,242,.26);transition:all .3s}
+.dots button.on{background:var(--crimson);transform:scale(1.5)}
+.replay{margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:none;border:none;
+  font-family:inherit;font-size:13px;font-weight:700;color:var(--ink-45);cursor:pointer;padding:0;transition:color .25s}
+.replay:hover{color:var(--crimson)}
+
+/* ---------- PART 02 : competencies ---------- */
+.capgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:34px}
+.capcard{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 20px;position:relative;overflow:hidden;
+  transition:border-color .3s,box-shadow .3s,transform .3s}
+.capcard::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--crimson);
+  transform:scaleX(0);transform-origin:0 50%;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.capcard:hover{border-color:var(--line-s);box-shadow:0 14px 34px rgba(17,19,26,.08);transform:translateY(-3px)}
+.capcard:hover::before{transform:scaleX(1)}
+.capcard h3{font-size:15px;font-weight:800;letter-spacing:-.01em;margin-bottom:14px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.capcard h3 em{font-style:normal;font-size:11px;font-weight:800;color:var(--crimson);background:var(--tint);
+  border-radius:6px;padding:2px 7px;letter-spacing:.04em}
+.pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:12.5px;font-weight:600;color:var(--ink-70);background:var(--bone);border:1px solid var(--line);
+  border-radius:999px;padding:4px 10px;transition:all .2s;cursor:pointer;font-family:inherit}
+.pill:hover,.pill:focus-visible{background:var(--crimson);border-color:var(--crimson);color:#fff;transform:translateY(-2px);outline:none}
+
+/* ---------- PART 03 : showcase ---------- */
+.act{padding:34px 0;border-top:1px solid var(--line)}
+.act-head{display:flex;gap:16px;align-items:flex-start;margin-bottom:20px}
+.act-num{font-size:13px;font-weight:800;color:var(--crimson);letter-spacing:.06em;flex:none;padding-top:7px;
+  font-variant-numeric:tabular-nums}
+.act-fn{font-size:22px;line-height:1.2;letter-spacing:-.02em;font-weight:800}
+.act-desc{font-size:15px;color:var(--ink-45);max-width:520px;margin-top:5px}
+.showcase{display:flex;gap:22px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;padding:22px;text-decoration:none;color:inherit;position:relative;overflow:hidden;
+  transition:box-shadow .35s,border-color .35s,transform .22s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.showcase::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--crimson);
+  transform:scaleY(0);transform-origin:50% 0;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.showcase:hover{box-shadow:0 20px 46px rgba(17,19,26,.12);border-color:var(--line-s)}
+.showcase:hover::after{transform:scaleY(1)}
+.sc-thumb{flex:none;width:176px;height:130px;border-radius:13px;overflow:hidden;background:var(--ink);position:relative}
+.sc-thumb svg{display:block;width:100%;height:100%;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.showcase:hover .sc-thumb svg{transform:scale(1.06)}
 .sc-main{flex:1;min-width:0}
-.kind{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--amber-d);margin-bottom:7px}
-.showcase h3{font-size:20px;line-height:1.22;margin-bottom:12px;color:var(--navy)}
-.ba{border-left:2px solid var(--line);padding-left:14px;margin-bottom:14px}
-.ba-row{display:flex;gap:10px;margin-bottom:7px}
+.kind{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--crimson);margin-bottom:8px}
+.showcase h3{font-size:20.5px;line-height:1.2;letter-spacing:-.02em;margin-bottom:13px;font-weight:800}
+.ba{border-left:2px solid var(--line);padding-left:15px;margin-bottom:14px}
+.ba-row{display:flex;gap:11px;margin-bottom:8px}
 .ba-row:last-child{margin-bottom:0}
-.ba-k{flex:none;width:48px;font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;padding-top:2px}
-.ba-before .ba-k{color:var(--faint)}
-.ba-after .ba-k{color:var(--amber-d)}
+.ba-k{flex:none;width:46px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;padding-top:3px}
+.ba-before .ba-k{color:var(--ink-45)}
+.ba-after .ba-k{color:var(--crimson)}
 .ba-row p{font-size:14.5px;line-height:1.5}
-.ba-before p{color:var(--muted)}
-.ba-after p{color:var(--navy);font-weight:600}
-.hashtags{display:flex;flex-wrap:wrap;gap:4px 12px;margin-bottom:14px}
-.htag{font-size:12.5px;font-weight:600;color:var(--amber-d)}
-.readmore{font-size:14px;font-weight:650;color:var(--navy)}
-.showcase:hover .readmore{color:var(--amber-d)}
+.ba-before p{color:var(--ink-45)}
+.ba-after p{color:var(--ink);font-weight:600}
+.ba-after p b{color:var(--crimson);font-weight:750}
+.hashtags{display:flex;flex-wrap:wrap;gap:4px 11px;margin-bottom:14px}
+.htag{font-size:12px;font-weight:700;color:var(--crimson);opacity:.85}
+.readmore{font-size:14px;font-weight:700;color:var(--ink);display:inline-flex;align-items:center;gap:7px}
+.readmore::after{content:"→";transition:transform .3s;display:inline-block}
+.showcase:hover .readmore{color:var(--crimson)}
+.showcase:hover .readmore::after{transform:translateX(5px)}
 .showcase.no-link{cursor:default}
-.showcase.no-link:hover{box-shadow:none;transform:none;border-color:var(--line)}
-.sc-soon{display:inline-block;font-size:12.5px;font-weight:700;color:var(--amber-d);background:#fff6e8;border:1px solid #f3ddad;border-radius:20px;padding:4px 11px}
-/* coming soon */
-.soon{padding:30px 0 4px;border-top:1px solid var(--line)}
-.soon .act-num{color:var(--faint)}
-.soon-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.soon-chip{font-size:13px;color:var(--muted);background:var(--chipbg);border:1px dashed #cdd4de;border-radius:20px;padding:6px 13px}
-/* scroll reveal (only when JS on; content visible by default) */
-.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.showcase.no-link:hover{box-shadow:none;border-color:var(--line)}
+.showcase.no-link:hover::after{transform:scaleY(0)}
+.sc-soon{display:inline-block;font-size:12px;font-weight:800;color:var(--crimson-d);background:var(--tint);
+  border:1px solid #F6CBD5;border-radius:999px;padding:5px 12px;letter-spacing:.02em}
+.soon{padding:34px 0 0;border-top:1px solid var(--line)}
+.soon .act-num{color:var(--ink-25)}
+.soon-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.soon-chip{font-size:13px;font-weight:600;color:var(--ink-45);background:transparent;border:1px dashed var(--line-s);
+  border-radius:999px;padding:6px 14px;transition:all .25s}
+.soon-chip:hover{border-color:var(--crimson);border-style:solid;color:var(--crimson)}
+
+/* ---------- band / footer ---------- */
+.band{background:var(--ink);color:var(--bone);border-radius:24px;padding:40px 36px}
+.band .chap-t{color:rgba(250,247,242,.5)}
+.band h2{color:var(--bone)}
+.band p{color:rgba(250,247,242,.72);font-size:16px;max-width:600px;margin-top:14px}
+.band p a{color:var(--crimson-l);text-decoration:none;border-bottom:1px solid rgba(242,96,127,.4)}
+.band p a:hover{border-color:var(--crimson-l)}
+.band p b{color:var(--bone);font-weight:700}
+.band .ctas{display:flex;flex-wrap:wrap;gap:11px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:700;text-decoration:none;
+  border-radius:999px;padding:12px 22px;transition:all .25s}
+.btn-p{background:var(--crimson);color:#fff}
+.btn-p:hover{background:#fff;color:var(--crimson);transform:translateY(-2px);box-shadow:0 10px 26px rgba(211,17,69,.35)}
+.btn-s{background:transparent;color:var(--bone);border:1px solid rgba(250,247,242,.28)}
+.btn-s:hover{border-color:var(--bone);background:rgba(250,247,242,.07);transform:translateY(-2px)}
+
+footer{padding:40px 0 64px;color:var(--ink-45);font-size:13.5px;display:flex;flex-wrap:wrap;gap:8px 18px;
+  justify-content:space-between;align-items:center}
+footer a{color:var(--crimson);text-decoration:none;font-weight:650}
+footer a:hover{text-decoration:underline}
+
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
 .js .reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}}
 
-/* FOOTER */
-footer{padding:44px 0 64px;text-align:left;color:var(--faint);font-size:13.5px;border-top:1px solid var(--line);margin-top:34px}
-footer a{color:var(--accent);text-decoration:none}
-
-@media(max-width:600px){
-  header{padding:52px 0 26px}
-  h1{font-size:34px}
-  .mission{font-size:18px}
-  .grid{grid-template-columns:1fr}
-  .showcase{flex-direction:column;gap:16px}
-  .sc-thumb{width:100%;height:120px}
-  .work-lead h2{font-size:24px}
+@media(max-width:760px){
+  .capgrid{grid-template-columns:1fr}
+  .metrics{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  header{padding:62px 0 26px}
+  section{padding:46px 0}
+  .showcase{flex-direction:column;gap:16px;padding:18px}
+  .sc-thumb{width:100%;height:132px}
+  .band{padding:30px 22px;border-radius:20px}
+  .opento{flex-wrap:wrap;border-radius:18px}
+  .rolebox{min-width:200px}
+  .stagefoot{flex-direction:column;gap:12px;padding:0 18px 18px}
+  .caps{min-height:164px}
+  .bt{font-size:12px;padding:7px 12px 7px 9px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none}
+  h1 .ln i{transform:none}
+  h1 .mark::after{transform:scaleX(1)}
 }
 </style>
 </head>
 <body>
+<div id="rail"><span></span></div>
 <div class="wrap">
 
   <header>
-    <h1>Huong Bui</h1>
-    <p class="mission">I turn manual, error-prone HR workflows into reliable, self-running systems — combining deep Workday HRIS expertise with the ability to actually build the automation.</p>
-    <span class="status"><span class="dot"></span>Open to Manager, HR Operations · Manager, HRIS · HRIS Consultant roles</span>
+    <div id="spot"></div>
+    <p class="eyebrow-top">HR Operations · HRIS · Automation</p>
+    <h1><span class="ln"><i><span class="mark">Huong</span> Bui</i></span></h1>
+    <p class="mission">I turn manual, error-prone HR workflows into reliable, self-running systems — combining deep <b>Workday HRIS</b> expertise with the rare ability to <b>actually build the automation</b> myself.</p>
+    <div class="opento">
+      <span class="dot"></span>
+      <span class="lbl">OPEN TO</span>
+      <span class="rolebox" id="rolebox">
+        <span class="on">Manager, HR Operations</span>
+        <span>Manager, HRIS</span>
+        <span>HRIS Consultant</span>
+      </span>
+    </div>
+
+    <div class="metrics reveal">
+      <div class="metric"><div class="n" data-count="7" data-suffix="+">0</div><div class="k">years in HR &amp; People Operations</div></div>
+      <div class="metric"><div class="n" data-count="10" data-suffix="">0</div><div class="k">core HR processes redesigned</div></div>
+      <div class="metric"><div class="n" data-count="5" data-suffix="">0</div><div class="k">HR systems built &amp; shipped</div></div>
+      <div class="metric"><div class="n" data-count="2" data-suffix="">0</div><div class="k">certifications — CTRS &amp; Workday</div></div>
+    </div>
   </header>
 
-  <section class="skills">
-    <p class="skillrow"><b>HRIS &amp; Workday:</b> Workday HCM, Report Writer, Case Management, Business Process Configuration, Dashboards, HR Analytics</p>
-    <p class="skillrow"><b>Automation &amp; Build:</b> Power Apps, Power Automate, Power BI, SharePoint, Copilot Studio</p>
-    <p class="skillrow"><b>HR &amp; Governance:</b> HR Governance, Policy Ownership, Labor-Law Compliance, C&amp;B / Total Rewards, Employee Lifecycle, Change Communication</p>
-  </section>
+  <!-- ===================== CHAPTER 01 — WHY I BUILD ===================== -->
+  <section class="sec-top">
+    <div class="reveal">
+      <div class="chap"><span class="chap-n">Part 01</span><span class="chap-t">Why I build</span></div>
+      <h2>It started inside the system.</h2>
+      <p class="lead">I didn't come to automation from engineering. I came to it from <b>HR governance</b> — working inside our core HR system every day, and noticing how many processes still sat <b>outside</b> it, running on email and manual effort.</p>
+    </div>
 
-  <section class="meta">
-    <p class="prev">7+ years in HR &amp; People Operations at <a href="https://www.aia.com.vn/" target="_blank" rel="noopener">AIA Vietnam</a>, with earlier roles at <a href="https://momo.vn/" target="_blank" rel="noopener">MoMo (Mservice)</a> and AI training at <a href="https://outlier.ai/" target="_blank" rel="noopener">Outlier</a>. CTRS-certified · Workday Certified Reporting Specialist.</p>
-    <div class="links">
-      <a href="mailto:huong0280@outlook.com">email</a>
-      <a href="https://www.linkedin.com/" target="_blank" rel="noopener">linkedin</a>
-      <a href="https://github.com/Huongbui0280" target="_blank" rel="noopener">github</a>
-      <a href="Huong_Bui_CV_2026.pdf" target="_blank" rel="noopener">resume</a>
-      <a href="work.html">case studies</a>
+    <div class="story reveal">
+      <div class="beatbar" id="beatbar">
+        <button class="bt on" data-beat="0" type="button"><span class="bn">1</span>Inside the core system</button>
+        <button class="bt" data-beat="1" type="button"><span class="bn">2</span>The gaps outside it</button>
+        <button class="bt" data-beat="2" type="button"><span class="bn">3</span>So I designed the flow</button>
+      </div>
+
+      <div class="stagebox" id="stagebox">
+        <svg id="stage" viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- ---------- SCENE 1 : inside the core system ---------- -->
+          <g id="sc0" class="scene on">
+            <g id="s0chips"></g>
+            <g id="s0lines" fill="none" stroke="#3A3F4A" stroke-width="2"></g>
+            <g id="s0card">
+              <rect x="286" y="96" width="196" height="112" rx="11" fill="#FAF7F2"/>
+              <rect x="286" y="96" width="196" height="26" rx="11" fill="#E6E0D7"/>
+              <rect x="286" y="110" width="196" height="12" fill="#E6E0D7"/>
+              <circle cx="300" cy="109" r="3.2" fill="#D31145"/>
+              <text x="312" y="113" fill="#4A4E58" font-size="9.5" font-weight="700" letter-spacing="1.1" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">CORE HR SYSTEM · EMPLOYEE RECORD</text>
+              <rect class="s0bar" x="302" y="136" width="0" height="7" rx="3.5" fill="#D8D1C6" data-w="120"/>
+              <rect class="s0bar" x="302" y="152" width="0" height="7" rx="3.5" fill="#D8D1C6" data-w="150"/>
+              <rect class="s0bar" x="302" y="168" width="0" height="7" rx="3.5" fill="#D8D1C6" data-w="96"/>
+              <rect class="s0bar" x="302" y="184" width="0" height="7" rx="3.5" fill="#D31145" data-w="64"/>
+            </g>
+            <g id="s0out" opacity="0">
+              <rect x="540" y="104" width="140" height="30" rx="7" fill="#1C1F28" stroke="#343945"/>
+              <text x="556" y="123" fill="#B4B7BD" font-size="10.5" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Reporting</text>
+              <rect x="540" y="142" width="140" height="30" rx="7" fill="#1C1F28" stroke="#343945"/>
+              <text x="556" y="161" fill="#B4B7BD" font-size="10.5" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Dashboards</text>
+              <rect x="540" y="180" width="140" height="30" rx="7" fill="#1C1F28" stroke="#343945"/>
+              <text x="556" y="199" fill="#B4B7BD" font-size="10.5" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Case Management</text>
+            </g>
+          </g>
+
+          <!-- ---------- SCENE 2 : the gaps that never reached the system ---------- -->
+          <g id="sc1" class="scene">
+            <g id="s1zone" opacity="0">
+              <rect x="498" y="26" width="196" height="248" rx="14" fill="#15181F" stroke="#343945" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <text x="596" y="50" text-anchor="middle" fill="#6E727B" font-size="9" font-weight="800" letter-spacing="1.2" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">THE CORE HR SYSTEM</text>
+              <text x="596" y="149" text-anchor="middle" fill="#6E727B" font-size="11.5" font-weight="800" letter-spacing=".6" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">NO TRIGGER</text>
+              <text x="596" y="168" text-anchor="middle" fill="#6E727B" font-size="11.5" font-weight="800" letter-spacing=".6" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">NO RECORD</text>
+            </g>
+            <g id="s1lines" fill="none" stroke="#3A3F4A" stroke-width="2" stroke-dasharray="5 5"></g>
+            <g id="s1chips"></g>
+            <g id="s1marks"></g>
+            <g id="s1dets"></g>
+            <g id="s1stops"></g>
+          </g>
+
+          <!-- ---------- SCENE 3 : same stage — now the flow crosses into the system ---------- -->
+          <g id="sc2" class="scene">
+            <g id="s2zone" opacity="0">
+              <rect x="498" y="26" width="196" height="248" rx="14" fill="#15181F" stroke="#D31145" stroke-width="1.5" stroke-dasharray="6 6" opacity="0.8"/>
+              <text x="596" y="50" text-anchor="middle" fill="#F2607F" font-size="9" font-weight="800" letter-spacing="1.2" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">THE CORE HR SYSTEM</text>
+            </g>
+            <g id="s2lines" fill="none" stroke-width="2.6" stroke-linecap="round"></g>
+            <g id="s2ghosts"></g>
+            <g id="s2chips"></g>
+            <g id="s2engine" opacity="0">
+              <rect x="300" y="110" width="160" height="84" rx="12" fill="#1C1F28" stroke="#D31145" stroke-width="2"/>
+              <text x="380" y="140" text-anchor="middle" fill="#F2607F" font-size="10" font-weight="800" letter-spacing="1.3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">I DESIGNED</text>
+              <text x="380" y="158" text-anchor="middle" fill="#FAF7F2" font-size="12" font-weight="800" letter-spacing=".4" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">The flow + the app</text>
+              <text x="380" y="176" text-anchor="middle" fill="#B4B7BD" font-size="9.2" font-weight="700" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">Power Automate · Power Apps</text>
+            </g>
+            <path id="s2out" d="M460 152 L500 152" fill="none" stroke="#D31145" stroke-width="4" stroke-linecap="round" opacity="0"/>
+            <g id="s2node" opacity="0">
+              <circle id="s2glow" cx="596" cy="152" r="28" fill="#D31145" opacity="0.18"/>
+              <circle cx="596" cy="152" r="19" fill="#D31145"/>
+              <path d="M588 152 l5.5 5.5 l11 -12" stroke="#11131A" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <text x="596" y="200" text-anchor="middle" fill="#FAF7F2" font-size="11" font-weight="800" letter-spacing="1.4" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">IN THE SYSTEM</text>
+              <text x="596" y="216" text-anchor="middle" fill="#6E727B" font-size="10" font-weight="700" letter-spacing="1.1" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif">TRACKED · AUDITABLE</text>
+            </g>
+          </g>
+        </svg>
+
+        <div class="stagefoot">
+          <div class="caps" id="storycaps">
+            <div class="cap on">
+              <h4>The core system did its job.</h4>
+              <p>Hiring, promotions, transfers, contract changes — the lifecycle ran through it, and I was inside it every day, configuring and reporting. <b>That's where the interest started.</b></p>
+            </div>
+            <div class="cap">
+              <h4>But some processes still sat outside it.</h4>
+              <p>In HR governance I kept finding steps the system never touched — chased over email, remembered by a person, collected by hand. <b>Every one of them could be automated. That's what made me curious.</b></p>
+            </div>
+            <div class="cap">
+              <h4>So I designed the flow and built the app.</h4>
+              <p>Power Automate for the routing and reminders, Power Apps for the part people touch, SharePoint as the record. <b>The manual step designed out</b> — triggered on time, visible, auditable.</p>
+            </div>
+          </div>
+          <div class="dots" id="storydots" role="tablist" aria-label="Story chapter">
+            <button class="on" type="button" data-beat="0" aria-label="Chapter 1"></button>
+            <button type="button" data-beat="1" aria-label="Chapter 2"></button>
+            <button type="button" data-beat="2" aria-label="Chapter 3"></button>
+          </div>
+        </div>
+      </div>
+      <button class="replay" id="storyreplay" type="button">↺ Replay the story</button>
     </div>
   </section>
 
-  <section class="work">
-    <div class="work-lead reveal">
-      <p class="eyebrow">Selected work</p>
+  <!-- ===================== CHAPTER 02 — WHAT I BRING ===================== -->
+  <section class="sec-top">
+    <div class="reveal">
+      <div class="chap"><span class="chap-n">Part 02</span><span class="chap-t">What I bring</span></div>
+      <h2>Three capabilities that usually sit in three different people.</h2>
+    </div>
+    <div class="capgrid reveal">
+      <div class="capcard">
+        <h3>HRIS &amp; Workday <em>CORE</em></h3>
+        <div class="pills">
+          <button class="pill" type="button">Workday HCM</button>
+          <button class="pill" type="button">HRIS Administration</button>
+          <button class="pill" type="button">Report Writer</button>
+          <button class="pill" type="button">Case Management</button>
+          <button class="pill" type="button">Time Off &amp; Absence</button>
+          <button class="pill" type="button">Employee Lifecycle</button>
+          <button class="pill" type="button">Dashboards</button>
+          <button class="pill" type="button">HR Analytics</button>
+        </div>
+      </div>
+      <div class="capcard">
+        <h3>Automation &amp; Build <em>RARE</em></h3>
+        <div class="pills">
+          <button class="pill" type="button">Power Apps</button>
+          <button class="pill" type="button">Power Automate</button>
+          <button class="pill" type="button">Power BI</button>
+          <button class="pill" type="button">SharePoint</button>
+          <button class="pill" type="button">Copilot Studio</button>
+        </div>
+      </div>
+      <div class="capcard">
+        <h3>HR Operations &amp; Governance <em>DEPTH</em></h3>
+        <div class="pills">
+          <button class="pill" type="button">HR Governance</button>
+          <button class="pill" type="button">Policy Ownership</button>
+          <button class="pill" type="button">Internal HR Audit</button>
+          <button class="pill" type="button">Risk Management</button>
+          <button class="pill" type="button">Labor-Law Compliance</button>
+          <button class="pill" type="button">C&amp;B / Total Rewards</button>
+          <button class="pill" type="button">Benefits Management</button>
+          <button class="pill" type="button">Labor Contracts</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CHAPTER 03 — WHAT I'VE BUILT ===================== -->
+  <section class="sec-top">
+    <div class="reveal">
+      <div class="chap"><span class="chap-n">Part 03</span><span class="chap-t">What I've built</span></div>
       <h2>Across the HR stack — the systems behind each function, built and owned end to end.</h2>
+      <p class="lead">Every case study below opens a working, clickable prototype. Real logic, dummy data.</p>
     </div>
 
-    <div class="act reveal">
+    <div class="act reveal" id="p-outsourcing" style="margin-top:34px">
       <div class="act-head">
         <span class="act-num">01</span>
         <div><h3 class="act-fn">HR Operations &amp; Automation</h3></div>
       </div>
-      <a class="showcase" href="outsourcing.html">
+      <a class="showcase mag" href="outsourcing.html">
         <div class="sc-thumb">
-          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="168" height="124" fill="#14213D"/>
-            <rect x="34" y="26" width="100" height="72" rx="8" fill="#ffffff"/>
-            <rect x="34" y="26" width="100" height="16" rx="8" fill="#EEF1F6"/>
-            <circle cx="44" cy="34" r="2.6" fill="#FCA311"/>
-            <rect x="44" y="54" width="62" height="6" rx="3" fill="#D9DDE3"/>
-            <rect x="44" y="66" width="76" height="6" rx="3" fill="#D9DDE3"/>
-            <rect x="44" y="78" width="48" height="6" rx="3" fill="#D9DDE3"/>
-            <circle cx="112" cy="80" r="12" fill="#FCA311"/>
-            <path d="M106 80 l4 4 l8 -8" stroke="#14213D" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg viewBox="0 0 176 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="176" height="130" fill="#11131A"/>
+            <rect x="38" y="28" width="100" height="74" rx="8" fill="#FAF7F2"/>
+            <rect x="38" y="28" width="100" height="16" rx="8" fill="#E6E0D7"/>
+            <circle cx="48" cy="36" r="2.6" fill="#D31145"/>
+            <rect x="48" y="57" width="62" height="6" rx="3" fill="#D8D1C6"/>
+            <rect x="48" y="69" width="76" height="6" rx="3" fill="#D8D1C6"/>
+            <rect x="48" y="81" width="44" height="6" rx="3" fill="#D8D1C6"/>
+            <circle cx="116" cy="84" r="12" fill="#D31145"/>
+            <path d="M110 84 l4 4 l8 -8" stroke="#FAF7F2" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
         <div class="sc-main">
@@ -160,25 +454,25 @@ footer a{color:var(--accent);text-decoration:none}
             <div class="ba-row ba-after"><span class="ba-k">After</span><p>One Power Platform app — routed approvals, notifications, and a single clean record.</p></div>
           </div>
           <div class="hashtags"><span class="htag">#PowerApps</span><span class="htag">#PowerAutomate</span><span class="htag">#SharePoint</span><span class="htag">#ApprovalWorkflows</span><span class="htag">#HROps</span></div>
-          <span class="readmore">Explore interactive demo &rarr;</span>
+          <span class="readmore">Explore interactive demo</span>
         </div>
       </a>
     </div>
 
-    <div class="act reveal">
+    <div class="act reveal" id="p-analytics">
       <div class="act-head">
         <span class="act-num">02</span>
         <div><h3 class="act-fn">People Analytics</h3></div>
       </div>
-      <a class="showcase" href="analytics.html">
+      <a class="showcase mag" href="analytics.html">
         <div class="sc-thumb">
-          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="168" height="124" fill="#14213D"/>
-            <circle cx="52" cy="62" r="22" fill="none" stroke="#33415f" stroke-width="10"/>
-            <circle cx="52" cy="62" r="22" fill="none" stroke="#FCA311" stroke-width="10" stroke-dasharray="80 58" stroke-linecap="round" transform="rotate(-90 52 62)"/>
-            <rect x="96" y="74" width="12" height="24" rx="2" fill="#D9DDE3"/>
-            <rect x="114" y="58" width="12" height="40" rx="2" fill="#FCA311"/>
-            <rect x="132" y="44" width="12" height="54" rx="2" fill="#D9DDE3"/>
+          <svg viewBox="0 0 176 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="176" height="130" fill="#11131A"/>
+            <circle cx="56" cy="65" r="23" fill="none" stroke="#3A3F4A" stroke-width="10"/>
+            <circle cx="56" cy="65" r="23" fill="none" stroke="#D31145" stroke-width="10" stroke-dasharray="84 61" stroke-linecap="round" transform="rotate(-90 56 65)"/>
+            <rect x="102" y="78" width="13" height="24" rx="2" fill="#D8D1C6"/>
+            <rect x="121" y="60" width="13" height="42" rx="2" fill="#D31145"/>
+            <rect x="140" y="44" width="13" height="58" rx="2" fill="#D8D1C6"/>
           </svg>
         </div>
         <div class="sc-main">
@@ -189,28 +483,28 @@ footer a{color:var(--accent);text-decoration:none}
             <div class="ba-row ba-after"><span class="ba-k">After</span><p>A live 500-person dashboard with slicers and click-to-cross-filter that leaders act on.</p></div>
           </div>
           <div class="hashtags"><span class="htag">#Workday</span><span class="htag">#PowerBI</span><span class="htag">#PeopleAnalytics</span><span class="htag">#Dashboards</span><span class="htag">#HRMetrics</span></div>
-          <span class="readmore">Explore interactive dashboard &rarr;</span>
+          <span class="readmore">Explore interactive dashboard</span>
         </div>
       </a>
     </div>
 
-    <div class="act reveal">
+    <div class="act reveal" id="p-eotq">
       <div class="act-head">
         <span class="act-num">03</span>
         <div><h3 class="act-fn">Employee Experience &amp; Recognition</h3></div>
       </div>
-      <a class="showcase" href="eotq.html">
+      <a class="showcase mag" href="eotq.html">
         <div class="sc-thumb">
-          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="168" height="124" fill="#14213D"/>
-            <rect x="24" y="40" width="58" height="42" rx="6" fill="#33415f"/>
-            <rect x="33" y="33" width="58" height="42" rx="6" fill="#4a5a7d"/>
-            <rect x="42" y="26" width="58" height="42" rx="6" fill="#ffffff"/>
-            <rect x="49" y="35" width="36" height="4.5" rx="2.2" fill="#D9DDE3"/>
-            <rect x="49" y="44" width="44" height="4.5" rx="2.2" fill="#D9DDE3"/>
-            <rect x="49" y="53" width="28" height="4.5" rx="2.2" fill="#D9DDE3"/>
-            <circle cx="126" cy="62" r="17" fill="#FCA311"/>
-            <path d="M126 51 l3.2 6.9 l7.6 .9 l-5.5 5.3 l1.4 7.5 l-6.7 -3.6 l-6.7 3.6 l1.4 -7.5 l-5.5 -5.3 l7.6 -.9 z" fill="#14213D"/>
+          <svg viewBox="0 0 176 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="176" height="130" fill="#11131A"/>
+            <rect x="26" y="43" width="58" height="42" rx="6" fill="#2C3038"/>
+            <rect x="35" y="36" width="58" height="42" rx="6" fill="#474C57"/>
+            <rect x="44" y="28" width="58" height="42" rx="6" fill="#FAF7F2"/>
+            <rect x="51" y="37" width="36" height="4.5" rx="2.2" fill="#D8D1C6"/>
+            <rect x="51" y="46" width="44" height="4.5" rx="2.2" fill="#D8D1C6"/>
+            <rect x="51" y="55" width="28" height="4.5" rx="2.2" fill="#D8D1C6"/>
+            <circle cx="132" cy="65" r="17" fill="#D31145"/>
+            <path d="M132 54 l3.2 6.9 l7.6 .9 l-5.5 5.3 l1.4 7.5 l-6.7 -3.6 l-6.7 3.6 l1.4 -7.5 l-5.5 -5.3 l7.6 -.9 z" fill="#FAF7F2"/>
           </svg>
         </div>
         <div class="sc-main">
@@ -221,34 +515,34 @@ footer a{color:var(--accent);text-decoration:none}
             <div class="ba-row ba-after"><span class="ba-k">After</span><p>Company-wide story nominations and voting, with transparent, quota-based selection everyone can see.</p></div>
           </div>
           <div class="hashtags"><span class="htag">#PowerApps</span><span class="htag">#Recognition</span><span class="htag">#Governance</span><span class="htag">#Audit</span><span class="htag">#EmployeeExperience</span></div>
-          <span class="readmore">Explore interactive demo &rarr;</span>
+          <span class="readmore">Explore interactive demo</span>
         </div>
       </a>
     </div>
 
-    <div class="act reveal">
+    <div class="act reveal" id="p-ai">
       <div class="act-head">
         <span class="act-num">04</span>
         <div><h3 class="act-fn">AI in HR</h3></div>
       </div>
       <div class="showcase no-link">
         <div class="sc-thumb">
-          <svg viewBox="0 0 168 124" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect width="168" height="124" fill="#14213D"/>
-            <rect x="28" y="30" width="88" height="64" rx="10" fill="#ffffff"/>
-            <rect x="40" y="46" width="52" height="6" rx="3" fill="#D9DDE3"/>
-            <rect x="40" y="58" width="64" height="6" rx="3" fill="#D9DDE3"/>
-            <rect x="40" y="70" width="38" height="6" rx="3" fill="#D9DDE3"/>
-            <polygon points="128,40 131,54 145,58 131,62 128,76 125,62 111,58 125,54" fill="#FCA311"/>
-            <polygon points="120,74 122,82 130,84 122,86 120,94 118,86 110,84 118,82" fill="#FCA311" opacity="0.7"/>
+          <svg viewBox="0 0 176 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="176" height="130" fill="#11131A"/>
+            <rect x="30" y="32" width="88" height="66" rx="10" fill="#FAF7F2"/>
+            <rect x="42" y="49" width="52" height="6" rx="3" fill="#D8D1C6"/>
+            <rect x="42" y="61" width="64" height="6" rx="3" fill="#D8D1C6"/>
+            <rect x="42" y="73" width="38" height="6" rx="3" fill="#D8D1C6"/>
+            <polygon points="134,42 137,56 151,60 137,64 134,78 131,64 117,60 131,56" fill="#D31145"/>
+            <polygon points="126,76 128,84 136,86 128,88 126,96 124,88 116,86 124,84" fill="#D31145" opacity="0.65"/>
           </svg>
         </div>
         <div class="sc-main">
-          <div class="kind">Copilot · Copilot Studio · Prompting</div>
-          <h3>AI in HR</h3>
+          <div class="kind">Copilot Studio · HR Copilot agents · LBU-level rollout</div>
+          <h3>AI in HR — two HR Copilot agents</h3>
           <div class="ba">
-            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>Drafting comms, policies and reports by hand, and answering the same employee questions over and over.</p></div>
-            <div class="ba-row ba-after"><span class="ba-k">After</span><p>Copilot and well-designed prompts draft, summarize and answer in minutes — with a human in the loop.</p></div>
+            <div class="ba-row ba-before"><span class="ba-k">Before</span><p>The same employee questions answered over and over, and every personal-data change routed through an HR person.</p></div>
+            <div class="ba-row ba-after"><span class="ba-k">After</span><p>A Query Agent I took from knowledge-base review and UAT to beta and company-wide launch — <b>~30% employee adoption in the first month</b> — plus a Data Management Agent letting employees update their own data through an AI-guided chat flow.</p></div>
           </div>
           <div class="hashtags"><span class="htag">#Copilot</span><span class="htag">#CopilotStudio</span><span class="htag">#Prompting</span><span class="htag">#GenAIforHR</span><span class="htag">#Automation</span></div>
           <span class="sc-soon">Case study coming soon</span>
@@ -274,26 +568,440 @@ footer a{color:var(--accent);text-decoration:none}
     </div>
   </section>
 
+  <!-- ===================== BACKGROUND / CONTACT ===================== -->
+  <section class="sec-top">
+    <div class="band reveal">
+      <div class="chap"><span class="chap-n">Part 04</span><span class="chap-t">Background</span></div>
+      <h2>Seven years inside HR — then I learned to build.</h2>
+      <p>7+ years at <a href="https://www.aia.com.vn/" target="_blank" rel="noopener">AIA Vietnam</a>, from C&amp;B operations through People Advisory, HR Analytics and Benefits, to <b>HRIS &amp; HR Governance, Senior Lead</b> — plus Learning &amp; OD at <a href="https://momo.vn/" target="_blank" rel="noopener">MoMo (Mservice)</a> and generative-AI training work at <a href="https://outlier.ai/" target="_blank" rel="noopener">Outlier</a>. Bachelor of Law (Honor Program) · Certified Total Rewards Specialist (CTRS) · Workday Certified Reporting Specialist. Based in Ho Chi Minh City.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="mailto:huong0280@outlook.com">Get in touch</a>
+        <a class="btn btn-s" href="Huong_Bui_CV_2026.pdf" target="_blank" rel="noopener">Resume (PDF)</a>
+        <a class="btn btn-s" href="work.html">All case studies</a>
+        <a class="btn btn-s" href="https://www.linkedin.com/in/huong-bui" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p>&copy; 2026 Huong Bui · huongbui.com · <a href="mailto:huong0280@outlook.com">huong0280@outlook.com</a></p>
+    <span>&copy; 2026 Huong Bui · huongbui.com</span>
+    <a href="mailto:huong0280@outlook.com">huong0280@outlook.com</a>
   </footer>
 
 </div>
+
 <script>
-  document.body.classList.add('js');
+(function(){
+  "use strict";
+  var NS = 'http://www.w3.org/2000/svg';
+  var body = document.body;
+  body.classList.add('js');
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var FINE = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (FINE) body.classList.add('has-pointer');
+  requestAnimationFrame(function(){ body.classList.add('lit'); });
+
+  function ease(k){ return 1 - Math.pow(1 - k, 3); }
+  function clamp01(v){ return v < 0 ? 0 : (v > 1 ? 1 : v); }
+  function el(tag, attrs){
+    var n = document.createElementNS(NS, tag);
+    for (var k in attrs) if (attrs.hasOwnProperty(k)) n.setAttribute(k, attrs[k]);
+    return n;
+  }
+  function txt(x, y, s, fill, size, weight, anchor){
+    var t = el('text', {x:x, y:y, fill:fill, 'font-size':size, 'font-weight':weight,
+      'font-family':'-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif'});
+    if (anchor) t.setAttribute('text-anchor', anchor);
+    t.textContent = s;
+    return t;
+  }
+
+  /* ---------- scroll progress rail ---------- */
+  var railBar = document.querySelector('#rail span');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    railBar.style.width = clamp01(h > 0 ? window.pageYOffset / h : 0) * 100 + '%';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---------- hero spotlight ---------- */
+  var hero = document.querySelector('header');
+  var spot = document.getElementById('spot');
+  if (hero && spot && FINE && !REDUCED){
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      spot.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      spot.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  }
+
+  /* ---------- open-to role ticker ---------- */
   (function(){
-    var els = document.querySelectorAll('.reveal');
-    if(!('IntersectionObserver' in window)){
-      els.forEach(function(el){ el.classList.add('in'); });
-      return;
-    }
+    var box = document.getElementById('rolebox');
+    if (!box || REDUCED) return;
+    var items = box.querySelectorAll('span');
+    if (items.length < 2) return;
+    var i = 0;
+    setInterval(function(){
+      var cur = items[i];
+      i = (i + 1) % items.length;
+      var nxt = items[i];
+      cur.classList.remove('on'); cur.classList.add('out');
+      nxt.classList.remove('out'); nxt.classList.add('on');
+      setTimeout(function(){ cur.classList.remove('out'); }, 500);
+    }, 2600);
+  })();
+
+  /* ---------- reveal + counters ---------- */
+  function countUp(node){
+    var target = parseFloat(node.getAttribute('data-count'));
+    var suffix = node.getAttribute('data-suffix') || '';
+    if (!isFinite(target)){ node.textContent = '—'; return; }
+    if (REDUCED){ node.textContent = target + suffix; return; }
+    var dur = 1100, t0 = null;
+    requestAnimationFrame(function step(ts){
+      if (t0 === null) t0 = ts;
+      var k = clamp01((ts - t0) / dur);
+      node.textContent = Math.round(target * ease(k)) + (k === 1 ? suffix : '');
+      if (k < 1) requestAnimationFrame(step);
+    });
+  }
+  function activate(node){
+    node.classList.add('in');
+    var ns = node.querySelectorAll('[data-count]');
+    for (var j = 0; j < ns.length; j++) countUp(ns[j]);
+  }
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        if (e.isIntersecting){ activate(e.target); io.unobserve(e.target); }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    els.forEach(function(el){ io.observe(el); });
+    }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+    for (var i2 = 0; i2 < revealEls.length; i2++) io.observe(revealEls[i2]);
+  } else {
+    for (var i3 = 0; i3 < revealEls.length; i3++) activate(revealEls[i3]);
+  }
+
+  /* ---------- magnetic showcase cards ---------- */
+  if (FINE && !REDUCED){
+    var mags = document.querySelectorAll('.mag');
+    for (var m = 0; m < mags.length; m++){
+      (function(card){
+        card.addEventListener('mousemove', function(e){
+          var r = card.getBoundingClientRect();
+          var dx = (e.clientX - (r.left + r.width/2)) / r.width;
+          var dy = (e.clientY - (r.top + r.height/2)) / r.height;
+          card.style.transform = 'perspective(900px) translate3d(' + (dx*7).toFixed(2) + 'px,' +
+            (dy*5 - 4).toFixed(2) + 'px,0) rotateX(' + (-dy*2.2).toFixed(2) + 'deg) rotateY(' +
+            (dx*2.6).toFixed(2) + 'deg)';
+        });
+        card.addEventListener('mouseleave', function(){ card.style.transform = ''; });
+      })(mags[m]);
+    }
+  }
+
+
+  /* ================= PART 01 : the three-beat story ================= */
+  (function(){
+    var stage = document.getElementById('stage');
+    var stagebox = document.getElementById('stagebox');
+    if (!stage || !stagebox) return;
+
+    var CY = 152, CHIP_X = 36, CHIP_W = 132, CHIP_H = 32;
+    /* beat 1 — what the core system already handled */
+    var EVENTS = ['Hiring', 'Promotion', 'Transfer', 'Contract'];
+    /* beats 2 & 3 — the real processes that sat outside it */
+    var GAPS = ['Hiring consent', 'Outsourced staff', 'HR communication', 'Award nomination'];
+    var MANUAL = [
+      'Email chase for consent',
+      '~50 manager emails/month',
+      'Sent by hand, unmeasured',
+      'HRBP chases each round'
+    ];
+    var YS = [60, 112, 164, 216];
+    /* shared spine for beats 2 & 3 — same chips, same boundary, so 2 -> 3 reads as one picture changing */
+    var CHIP_R = CHIP_X + CHIP_W;   /* 168 — right edge of every chip */
+    var TAG_X = 188, TAG_W = 70;    /* the MANUAL tag, identical in both beats */
+    var BX = 498;                   /* the boundary of the core HR system */
+    var EC_X = 380;                 /* engine centre, where the manual tags collapse to */
+    var INK_L = '#1C1F28', STROKE = '#343945', BONE = '#FAF7F2', GREY = '#B4B7BD', CRIMSON = '#D31145';
+
+    /* ---- build the repeated chip columns once ---- */
+    function buildChips(host, labelFill, labels, size){
+      for (var i = 0; i < labels.length; i++){
+        var g = el('g', {opacity:'0'});
+        g.appendChild(el('rect', {x:CHIP_X, y:YS[i] - CHIP_H/2, width:CHIP_W, height:CHIP_H,
+          rx:8, fill:INK_L, stroke:STROKE}));
+        g.appendChild(txt(CHIP_X + 13, YS[i] + 4.5, labels[i], labelFill, size || 11.5, 700));
+        host.appendChild(g);
+      }
+      return host.childNodes;
+    }
+    var s0chips = buildChips(document.getElementById('s0chips'), BONE, EVENTS);
+    var s1chips = buildChips(document.getElementById('s1chips'), GREY, GAPS, 11);
+    var s2chips = buildChips(document.getElementById('s2chips'), BONE, GAPS, 11);
+
+    /* ---- scene 1 : lines chip -> record ---- */
+    var s0lines = [];
+    (function(){
+      var host = document.getElementById('s0lines');
+      for (var i = 0; i < YS.length; i++){
+        var p = el('path', {d:'M' + (CHIP_X + CHIP_W) + ' ' + YS[i] + ' C 212 ' + YS[i] +
+          ', 240 ' + CY + ', 284 ' + CY, 'stroke-dasharray':'200', 'stroke-dashoffset':'200'});
+        host.appendChild(p);
+        s0lines.push(p);
+      }
+    })();
+    var s0bars = stage.querySelectorAll('.s0bar');
+    var s0out = document.getElementById('s0out');
+
+    /* ---- scene 2 : each gap -> a MANUAL tag -> the manual step -> stopped at the boundary ---- */
+    var TAG_C = TAG_X + TAG_W / 2;      /* 223 — centre of the MANUAL tag */
+    var DET_X = TAG_X + TAG_W + 16;     /* 274 — where the detail sentence starts */
+    /* one MANUAL tag, drawn identically in beat 2 (s1marks) and as a ghost in beat 3 (s2ghosts) */
+    function manualTag(){
+      var g = el('g', {opacity:'0'});
+      g.appendChild(el('rect', {x:TAG_X, y:-13, width:TAG_W, height:26, rx:7,
+        fill:'#2C1419', stroke:CRIMSON, 'stroke-width':'1.4'}));
+      g.appendChild(txt(TAG_C, 4, 'MANUAL', '#F2607F', 10, 800, 'middle'));
+      return g;
+    }
+    (function(){
+      var host = document.getElementById('s1lines');
+      for (var i = 0; i < YS.length; i++){
+        /* chip -> tag */
+        host.appendChild(el('path', {d:'M' + CHIP_R + ' ' + YS[i] + ' L ' + TAG_X + ' ' + YS[i],
+          opacity:'0.55'}));
+        /* detail -> boundary : the run that never arrives */
+        host.appendChild(el('path', {d:'M462 ' + YS[i] + ' L ' + (BX - 8) + ' ' + YS[i],
+          opacity:'0.4'}));
+      }
+    })();
+    var s1marks = [], s1dets = [], s1stops = [];
+    (function(){
+      var host = document.getElementById('s1marks'), dhost = document.getElementById('s1dets');
+      var shost = document.getElementById('s1stops');
+      for (var i = 0; i < YS.length; i++){
+        var g = manualTag();
+        g.setAttribute('transform', 'translate(0 ' + YS[i] + ')');
+        host.appendChild(g);
+        s1marks.push(g);
+
+        var t = txt(DET_X, YS[i] + 4.5, MANUAL[i], GREY, 13, 600);
+        t.setAttribute('opacity', '0');
+        dhost.appendChild(t);
+        s1dets.push(t);
+
+        /* the crimson stop : this process never crosses into the system */
+        var s = el('g', {opacity:'0', stroke:CRIMSON, 'stroke-width':'3',
+          'stroke-linecap':'round', fill:'none'});
+        s.appendChild(el('path', {d:'M' + (BX - 6) + ' ' + (YS[i] - 6) +
+          ' L' + (BX + 6) + ' ' + (YS[i] + 6)}));
+        s.appendChild(el('path', {d:'M' + (BX + 6) + ' ' + (YS[i] - 6) +
+          ' L' + (BX - 6) + ' ' + (YS[i] + 6)}));
+        shost.appendChild(s);
+        s1stops.push(s);
+      }
+    })();
+    var s1zone = document.getElementById('s1zone');
+
+    /* ---- scene 3 : lines fan into one engine, then one record ---- */
+    var s2lines = [];
+    function s2d(i, merge){
+      var ye = YS[i] + (CY - YS[i]) * merge;
+      return 'M' + CHIP_R + ' ' + YS[i] +
+             ' C 214 ' + YS[i] + ', 252 ' + ye.toFixed(1) + ', 300 ' + ye.toFixed(1);
+    }
+    (function(){
+      var host = document.getElementById('s2lines');
+      for (var i = 0; i < YS.length; i++){
+        var p = el('path', {d:s2d(i, 0), stroke:CRIMSON, opacity:'0.35'});
+        host.appendChild(p);
+        s2lines.push(p);
+      }
+    })();
+    /* the beat-2 MANUAL tags, carried over so beat 3 reads as the same picture changing:
+       they start exactly where beat 2 left them, then collapse into the engine and vanish. */
+    var s2ghosts = [];
+    function ghostAt(i, p){
+      var k = 1 - p;
+      var cx = TAG_C + (EC_X - TAG_C) * p;
+      var cy = YS[i] + (CY - YS[i]) * p;
+      return 'translate(' + (cx - k * TAG_C).toFixed(1) + ' ' + cy.toFixed(1) +
+             ') scale(' + k.toFixed(3) + ')';
+    }
+    (function(){
+      var host = document.getElementById('s2ghosts');
+      for (var i = 0; i < YS.length; i++){
+        var g = manualTag();
+        g.setAttribute('transform', ghostAt(i, 0));
+        host.appendChild(g);
+        s2ghosts.push(g);
+      }
+    })();
+    var s2zone = document.getElementById('s2zone');
+    var s2engine = document.getElementById('s2engine');
+    var s2out = document.getElementById('s2out');
+    var s2node = document.getElementById('s2node');
+    var s2glow = document.getElementById('s2glow');
+
+    /* ---- per-beat animators : each receives t in 0..1 ---- */
+    function reset(i){
+      if (i === 0){
+        for (var a = 0; a < s0chips.length; a++) s0chips[a].setAttribute('opacity', '0');
+        for (var b = 0; b < s0lines.length; b++) s0lines[b].setAttribute('stroke-dashoffset', '200');
+        for (var c = 0; c < s0bars.length; c++) s0bars[c].setAttribute('width', '0');
+        s0out.setAttribute('opacity', '0');
+      } else if (i === 1){
+        if (s1zone) s1zone.setAttribute('opacity', '0');
+        for (var d = 0; d < s1chips.length; d++) s1chips[d].setAttribute('opacity', '0');
+        for (var e2 = 0; e2 < s1marks.length; e2++) s1marks[e2].setAttribute('opacity', '0');
+        for (var e3 = 0; e3 < s1dets.length; e3++) s1dets[e3].setAttribute('opacity', '0');
+        for (var e4 = 0; e4 < s1stops.length; e4++) s1stops[e4].setAttribute('opacity', '0');
+      } else {
+        if (s2zone) s2zone.setAttribute('opacity', '0');
+        for (var f = 0; f < s2chips.length; f++) s2chips[f].setAttribute('opacity', '0');
+        for (var g2 = 0; g2 < s2lines.length; g2++){
+          s2lines[g2].setAttribute('d', s2d(g2, 0));
+          s2lines[g2].setAttribute('opacity', '0.35');
+        }
+        for (var g3 = 0; g3 < s2ghosts.length; g3++){
+          s2ghosts[g3].setAttribute('transform', ghostAt(g3, 0));
+          s2ghosts[g3].setAttribute('opacity', '0');
+        }
+        s2engine.setAttribute('opacity', '0');
+        s2out.setAttribute('opacity', '0');
+        s2node.setAttribute('opacity', '0');
+      }
+    }
+
+    var ANIM = [
+      /* beat 1 — the platform */
+      function(t){
+        for (var i = 0; i < 4; i++){
+          var k = clamp01((t - i * 0.08) / 0.3);
+          s0chips[i].setAttribute('opacity', k.toFixed(3));
+          var dk = clamp01((t - 0.18 - i * 0.08) / 0.34);
+          s0lines[i].setAttribute('stroke-dashoffset', (200 * (1 - ease(dk))).toFixed(1));
+        }
+        for (var b = 0; b < s0bars.length; b++){
+          var bk = clamp01((t - 0.46 - b * 0.06) / 0.3);
+          s0bars[b].setAttribute('width', (parseFloat(s0bars[b].getAttribute('data-w')) * ease(bk)).toFixed(1));
+        }
+        s0out.setAttribute('opacity', clamp01((t - 0.68) / 0.3).toFixed(3));
+      },
+      /* beat 2 — the gaps that sat outside the system, stopping dead at its boundary */
+      function(t){
+        if (s1zone) s1zone.setAttribute('opacity', (0.95 * clamp01(t / 0.16)).toFixed(3));
+        for (var i = 0; i < 4; i++){
+          s1chips[i].setAttribute('opacity', clamp01((t - i * 0.05) / 0.18).toFixed(3));
+          s1marks[i].setAttribute('opacity', clamp01((t - 0.12 - i * 0.15) / 0.18).toFixed(3));
+          s1dets[i].setAttribute('opacity', (0.92 * clamp01((t - 0.2 - i * 0.15) / 0.2)).toFixed(3));
+          s1stops[i].setAttribute('opacity', clamp01((t - 0.3 - i * 0.15) / 0.18).toFixed(3));
+        }
+      },
+      /* beat 3 — same chips, same boundary : now the flow crosses it */
+      function(t){
+        if (s2zone) s2zone.setAttribute('opacity', '1');
+        /* the MANUAL tags from beat 2 collapse into the engine */
+        var col = ease(clamp01(t / 0.38));
+        for (var h = 0; h < 4; h++){
+          s2ghosts[h].setAttribute('transform', ghostAt(h, col));
+          s2ghosts[h].setAttribute('opacity', (1 - clamp01(t / 0.34)).toFixed(3));
+        }
+        var merge = ease(clamp01(t / 0.52));
+        for (var i = 0; i < 4; i++){
+          s2chips[i].setAttribute('opacity', clamp01(t / 0.2).toFixed(3));
+          s2lines[i].setAttribute('d', s2d(i, merge));
+          s2lines[i].setAttribute('opacity', (0.35 + 0.55 * merge).toFixed(3));
+        }
+        s2engine.setAttribute('opacity', clamp01((t - 0.34) / 0.24).toFixed(3));
+        s2out.setAttribute('opacity', clamp01((t - 0.56) / 0.2).toFixed(3));
+        s2node.setAttribute('opacity', clamp01((t - 0.66) / 0.24).toFixed(3));
+        if (s2glow) s2glow.setAttribute('r', (26 + Math.sin(clamp01(t) * Math.PI) * 9).toFixed(1));
+      }
+    ];
+
+    /* ---- beat orchestration ---- */
+    var scenes = [document.getElementById('sc0'), document.getElementById('sc1'), document.getElementById('sc2')];
+    var captions = document.querySelectorAll('#storycaps .cap');
+    var tabs = document.querySelectorAll('#beatbar .bt');
+    var dots = document.querySelectorAll('#storydots button');
+    var BEATS = 3, DUR = 2200, HOLD = 2100;
+    var cur = -1, raf = null, timer = null, hovering = false, onScreen = false;
+
+    function paintUI(i){
+      for (var a = 0; a < BEATS; a++){
+        if (scenes[a]) scenes[a].classList.toggle('on', a === i);
+        if (captions[a]) captions[a].classList.toggle('on', a === i);
+        if (tabs[a]) tabs[a].classList.toggle('on', a === i);
+        if (dots[a]) dots[a].classList.toggle('on', a === i);
+      }
+    }
+    function stop(){
+      if (raf){ cancelAnimationFrame(raf); raf = null; }
+      if (timer){ clearTimeout(timer); timer = null; }
+    }
+    function go(i, auto){
+      stop();
+      i = ((i % BEATS) + BEATS) % BEATS;
+      cur = i;
+      paintUI(i);
+      reset(i);
+      if (REDUCED){ ANIM[i](1); return; }
+      var t0 = null;
+      raf = requestAnimationFrame(function loop(ts){
+        if (t0 === null) t0 = ts;
+        var t = clamp01((ts - t0) / DUR);
+        ANIM[i](t);
+        if (t < 1){ raf = requestAnimationFrame(loop); }
+        else {
+          raf = null;
+          if (auto && !hovering && onScreen){
+            timer = setTimeout(function(){ go(cur + 1, true); }, HOLD);
+          }
+        }
+      });
+    }
+
+    for (var a2 = 0; a2 < tabs.length; a2++){
+      (function(btn){
+        btn.addEventListener('click', function(){ go(parseInt(btn.getAttribute('data-beat'), 10), false); });
+      })(tabs[a2]);
+    }
+    for (var b2 = 0; b2 < dots.length; b2++){
+      (function(btn){
+        btn.addEventListener('click', function(){ go(parseInt(btn.getAttribute('data-beat'), 10), false); });
+      })(dots[b2]);
+    }
+    var replay = document.getElementById('storyreplay');
+    if (replay) replay.addEventListener('click', function(){ go(0, true); });
+
+    stagebox.addEventListener('mouseenter', function(){ hovering = true; });
+    stagebox.addEventListener('mouseleave', function(){
+      hovering = false;
+      if (!raf && !timer && onScreen) timer = setTimeout(function(){ go(cur + 1, true); }, 600);
+    });
+
+    reset(0); reset(1); reset(2);
+    paintUI(0);
+    if ('IntersectionObserver' in window){
+      var sio = new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          onScreen = e.isIntersecting;
+          if (e.isIntersecting && cur === -1) go(0, true);
+          else if (!e.isIntersecting) stop();
+        });
+      }, { threshold: 0.35 });
+      sio.observe(stagebox);
+    } else {
+      go(0, true);
+    }
   })();
+})();
 </script>
 </body>
 </html>
